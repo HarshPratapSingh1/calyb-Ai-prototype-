@@ -1,0 +1,761 @@
+{
+  "input": "Propose a TypeGuard variant that also narrows the type in the else branch.",
+  "input_type": "proposal",
+  "verdict": "already_exists",
+  "summary": "PEP 724 (\"Stricter Type Guards\") proposed Stricter Type Guards and its status is Withdrawn. It was replaced by PEP 742. A closely related idea, \"Enforcing Strict Narrowing\", was rejected in PEP 647: For instance, the is_str_list example above would be considered invalid because List[str] is not a subtype of List[object] because of invariance rules. TypeGuard already exists: introduced by PEP 647 (\"User-Defined Type Guards\"), available since Python 3.10. TypeGuard was later extended by PEP 742 (\"Narrowing types with TypeIs\", Python 3.13) adding TypeIs.",
+  "minimum_python_version": "3.10",
+  "matched_entities": [
+    {
+      "id": "construct:typeguard",
+      "type": "Construct",
+      "label": "TypeGuard",
+      "strength": 1.0,
+      "matched_on": "canonical name 'TypeGuard'"
+    },
+    {
+      "id": "problem:unsafe-narrowing",
+      "type": "Problem",
+      "label": "type narrowing is unsound or cannot narrow the negative case",
+      "strength": 0.7,
+      "matched_on": "alias 'else branch'"
+    }
+  ],
+  "ranked_peps": [
+    {
+      "pep": 647,
+      "title": "User-Defined Type Guards",
+      "status": "Final",
+      "python_version": "3.10",
+      "in_slice": true,
+      "score": 2.923,
+      "score_breakdown": {
+        "paths": [
+          {
+            "route": "construct:typeguard <-INTRODUCES- pep:647",
+            "strength": 0.6
+          },
+          {
+            "route": "problem:unsafe-narrowing <-ADDRESSES_PROBLEM- pep:647",
+            "strength": 0.42
+          },
+          {
+            "route": "construct:typeguard <-CONCERNS- idea:647/conditionally-applying-typeguard-type <-REJECTED_ALTERNATIVE- pep:647",
+            "strength": 0.292
+          },
+          {
+            "route": "construct:typeguard <-CONCERNS- idea:742/change-the-behavior-of-typeguard -CONCERNS-> pep:647",
+            "strength": 0.259
+          },
+          {
+            "route": "construct:typeguard <-EXTENDS- pep:724 -BUILDS_ON-> pep:647",
+            "strength": 0.252
+          }
+        ],
+        "path_sum": 2.76,
+        "status_weight": 1.0,
+        "centrality": 1.059
+      }
+    },
+    {
+      "pep": 724,
+      "title": "Stricter Type Guards",
+      "status": "Withdrawn",
+      "python_version": "3.13",
+      "in_slice": true,
+      "score": 2.881,
+      "score_breakdown": {
+        "paths": [
+          {
+            "route": "construct:typeguard <-EXTENDS- pep:724",
+            "strength": 0.42
+          },
+          {
+            "route": "problem:unsafe-narrowing <-ADDRESSES_PROBLEM- pep:724",
+            "strength": 0.42
+          },
+          {
+            "route": "construct:typeguard <-CONCERNS- idea:724/typeguard-with-a-second-output-type <-REJECTED_ALTERNATIVE- pep:724",
+            "strength": 0.292
+          },
+          {
+            "route": "construct:typeguard <-CONCERNS- idea:742/change-the-behavior-of-typeguard -CONCERNS-> pep:724",
+            "strength": 0.259
+          },
+          {
+            "route": "construct:typeguard <-EXTENDS- pep:742 -BUILDS_ON-> pep:724",
+            "strength": 0.252
+          }
+        ],
+        "path_sum": 3.109,
+        "status_weight": 0.9,
+        "centrality": 1.029
+      }
+    },
+    {
+      "pep": 742,
+      "title": "Narrowing types with TypeIs",
+      "status": "Final",
+      "python_version": "3.13",
+      "in_slice": true,
+      "score": 2.351,
+      "score_breakdown": {
+        "paths": [
+          {
+            "route": "construct:typeguard <-EXTENDS- pep:742",
+            "strength": 0.42
+          },
+          {
+            "route": "problem:unsafe-narrowing <-ADDRESSES_PROBLEM- pep:742",
+            "strength": 0.42
+          },
+          {
+            "route": "construct:typeguard <-CONCERNS- idea:742/change-the-behavior-of-typeguard <-REJECTED_ALTERNATIVE- pep:742",
+            "strength": 0.292
+          },
+          {
+            "route": "construct:typeguard <-CONCERNS- idea:742/alternative-names <-REJECTED_ALTERNATIVE- pep:742",
+            "strength": 0.227
+          },
+          {
+            "route": "construct:typeguard <-CONCERNS- idea:742/do-nothing <-REJECTED_ALTERNATIVE- pep:742",
+            "strength": 0.227
+          }
+        ],
+        "path_sum": 2.351,
+        "status_weight": 1.0,
+        "centrality": 1.0
+      }
+    }
+  ],
+  "conclusions": [
+    {
+      "rule": "I1_PRIOR_REJECTION",
+      "statement": "PEP 724 (\"Stricter Type Guards\") proposed Stricter Type Guards and its status is Withdrawn. It was replaced by PEP 742.",
+      "confidence": "high",
+      "peps": [
+        724,
+        742
+      ],
+      "evidence": [
+        {
+          "pep": 724,
+          "section": "Header",
+          "rule": "status",
+          "snippet": "Status: Withdrawn"
+        }
+      ]
+    },
+    {
+      "rule": "I1_PRIOR_REJECTION",
+      "statement": "A closely related idea, \"Enforcing Strict Narrowing\", was rejected in PEP 647: For instance, the is_str_list example above would be considered invalid because List[str] is not a subtype of List[object] because of invariance rules.",
+      "confidence": "medium",
+      "peps": [
+        647
+      ],
+      "evidence": [
+        {
+          "pep": 647,
+          "section": "Rejected Ideas > Enforcing Strict Narrowing",
+          "rule": "R-CON problem-cue /narrow(ing)?.{0,160}(unsound|unsafe|negative|else branch|surpris|incorrect|not narrow)/",
+          "snippet": "…t enforcing strict narrowing, it would be possible to break type safety. A poorly-written type guard function could produce unsafe or even nonsensica…"
+        }
+      ]
+    },
+    {
+      "rule": "I2_ALREADY_PROVIDED",
+      "statement": "TypeGuard already exists: introduced by PEP 647 (\"User-Defined Type Guards\"), available since Python 3.10.",
+      "confidence": "high",
+      "peps": [
+        647
+      ],
+      "evidence": [
+        {
+          "pep": 724,
+          "section": "Abstract",
+          "rule": "R-INT cross-reference",
+          "snippet": "[pep:647] This PEP refines the ``TypeGuard`` mechanism introduced in :pep:`647`."
+        },
+        {
+          "pep": 647,
+          "section": "Header",
+          "rule": "R-INT title",
+          "snippet": "Title: User-Defined Type Guards"
+        }
+      ]
+    },
+    {
+      "rule": "I7_EXTENDED_BY",
+      "statement": "TypeGuard was later extended by PEP 742 (\"Narrowing types with TypeIs\", Python 3.13) adding TypeIs.",
+      "confidence": "medium",
+      "peps": [
+        742
+      ],
+      "evidence": [
+        {
+          "pep": 742,
+          "section": "Abstract",
+          "rule": "R-EXT title/abstract-mention",
+          "snippet": "mentions ``typing.TypeGuard``"
+        }
+      ]
+    },
+    {
+      "rule": "I3_DEPENDS_ON",
+      "statement": "Builds on TypeGuard (PEP 647, Python 3.10). Minimum Python version implied: 3.10.",
+      "confidence": "high",
+      "peps": [
+        647
+      ],
+      "evidence": [
+        {
+          "pep": 647,
+          "section": "Header",
+          "rule": "R-VER Python-Version",
+          "snippet": "Python-Version: 3.10"
+        }
+      ]
+    },
+    {
+      "rule": "I4_SUPERSEDED_SOURCE",
+      "statement": "PEP 724 (\"Stricter Type Guards\") is superseded by PEP 742 (\"Narrowing types with TypeIs\", Python 3.13); prefer the newer semantics.",
+      "confidence": "high",
+      "peps": [
+        724,
+        742
+      ],
+      "evidence": [
+        {
+          "pep": 742,
+          "section": "Header",
+          "rule": "R-SUP Replaces",
+          "snippet": "Replaces: 724"
+        }
+      ]
+    }
+  ],
+  "citations": [
+    {
+      "pep": 647,
+      "title": "User-Defined Type Guards",
+      "status": "Final",
+      "url": "https://peps.python.org/pep-0647/",
+      "used_for": [
+        "I1_PRIOR_REJECTION",
+        "I2_ALREADY_PROVIDED",
+        "I3_DEPENDS_ON",
+        "ranked"
+      ],
+      "sections": [
+        "Header",
+        "Rejected Ideas > Enforcing Strict Narrowing"
+      ]
+    },
+    {
+      "pep": 724,
+      "title": "Stricter Type Guards",
+      "status": "Withdrawn",
+      "url": "https://peps.python.org/pep-0724/",
+      "used_for": [
+        "I1_PRIOR_REJECTION",
+        "I4_SUPERSEDED_SOURCE",
+        "ranked"
+      ],
+      "sections": [
+        "Abstract",
+        "Header"
+      ]
+    },
+    {
+      "pep": 742,
+      "title": "Narrowing types with TypeIs",
+      "status": "Final",
+      "url": "https://peps.python.org/pep-0742/",
+      "used_for": [
+        "I1_PRIOR_REJECTION",
+        "I4_SUPERSEDED_SOURCE",
+        "I7_EXTENDED_BY",
+        "ranked"
+      ],
+      "sections": [
+        "Abstract",
+        "Header"
+      ]
+    }
+  ],
+  "trace": [
+    {
+      "step": "classify",
+      "result": "proposal",
+      "rule": "starts with a proposal verb (add/allow/introduce/...)"
+    },
+    {
+      "step": "match",
+      "entity": "construct:typeguard",
+      "strength": 1.0,
+      "via": "canonical name 'TypeGuard'"
+    },
+    {
+      "step": "match",
+      "entity": "problem:unsafe-narrowing",
+      "strength": 0.7,
+      "via": "alias 'else branch'"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:typeguard",
+      "edge": "INTRODUCES",
+      "to": "pep:647",
+      "hop": 1,
+      "path_strength": 0.6,
+      "path": "construct:typeguard <-INTRODUCES- pep:647"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:typeguard",
+      "edge": "EXTENDS",
+      "to": "pep:724",
+      "hop": 1,
+      "path_strength": 0.42,
+      "path": "construct:typeguard <-EXTENDS- pep:724"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:typeguard",
+      "edge": "EXTENDS",
+      "to": "pep:742",
+      "hop": 1,
+      "path_strength": 0.42,
+      "path": "construct:typeguard <-EXTENDS- pep:742"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:typeguard",
+      "edge": "CONCERNS",
+      "to": "idea:647/conditionally-applying-typeguard-type",
+      "hop": 1,
+      "path_strength": 0.54,
+      "path": "construct:typeguard <-CONCERNS- idea:647/conditionally-applying-typeguard-type"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:647/conditionally-applying-typeguard-type",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:647",
+      "hop": 2,
+      "path_strength": 0.292,
+      "path": "construct:typeguard <-CONCERNS- idea:647/conditionally-applying-typeguard-type <-REJECTED_ALTERNATIVE- pep:647"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:typeguard",
+      "edge": "CONCERNS",
+      "to": "idea:724/stricttypeguard",
+      "hop": 1,
+      "path_strength": 0.42,
+      "path": "construct:typeguard <-CONCERNS- idea:724/stricttypeguard"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:724/stricttypeguard",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:724",
+      "hop": 2,
+      "path_strength": 0.227,
+      "path": "construct:typeguard <-CONCERNS- idea:724/stricttypeguard <-REJECTED_ALTERNATIVE- pep:724"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:typeguard",
+      "edge": "CONCERNS",
+      "to": "idea:724/typeguard-with-a-second-output-type",
+      "hop": 1,
+      "path_strength": 0.54,
+      "path": "construct:typeguard <-CONCERNS- idea:724/typeguard-with-a-second-output-type"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:724/typeguard-with-a-second-output-type",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:724",
+      "hop": 2,
+      "path_strength": 0.292,
+      "path": "construct:typeguard <-CONCERNS- idea:724/typeguard-with-a-second-output-type <-REJECTED_ALTERNATIVE- pep:724"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:typeguard",
+      "edge": "CONCERNS",
+      "to": "idea:742/alternative-names",
+      "hop": 1,
+      "path_strength": 0.42,
+      "path": "construct:typeguard <-CONCERNS- idea:742/alternative-names"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:742/alternative-names",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:742",
+      "hop": 2,
+      "path_strength": 0.227,
+      "path": "construct:typeguard <-CONCERNS- idea:742/alternative-names <-REJECTED_ALTERNATIVE- pep:742"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:typeguard",
+      "edge": "CONCERNS",
+      "to": "idea:742/change-the-behavior-of-typeguard",
+      "hop": 1,
+      "path_strength": 0.54,
+      "path": "construct:typeguard <-CONCERNS- idea:742/change-the-behavior-of-typeguard"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:742/change-the-behavior-of-typeguard",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:742",
+      "hop": 2,
+      "path_strength": 0.292,
+      "path": "construct:typeguard <-CONCERNS- idea:742/change-the-behavior-of-typeguard <-REJECTED_ALTERNATIVE- pep:742"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:typeguard",
+      "edge": "CONCERNS",
+      "to": "idea:742/do-nothing",
+      "hop": 1,
+      "path_strength": 0.42,
+      "path": "construct:typeguard <-CONCERNS- idea:742/do-nothing"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:742/do-nothing",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:742",
+      "hop": 2,
+      "path_strength": 0.227,
+      "path": "construct:typeguard <-CONCERNS- idea:742/do-nothing <-REJECTED_ALTERNATIVE- pep:742"
+    },
+    {
+      "step": "traverse",
+      "from": "problem:unsafe-narrowing",
+      "edge": "ADDRESSES_PROBLEM",
+      "to": "pep:647",
+      "hop": 1,
+      "path_strength": 0.42,
+      "path": "problem:unsafe-narrowing <-ADDRESSES_PROBLEM- pep:647"
+    },
+    {
+      "step": "traverse",
+      "from": "problem:unsafe-narrowing",
+      "edge": "ADDRESSES_PROBLEM",
+      "to": "pep:724",
+      "hop": 1,
+      "path_strength": 0.42,
+      "path": "problem:unsafe-narrowing <-ADDRESSES_PROBLEM- pep:724"
+    },
+    {
+      "step": "traverse",
+      "from": "problem:unsafe-narrowing",
+      "edge": "ADDRESSES_PROBLEM",
+      "to": "pep:742",
+      "hop": 1,
+      "path_strength": 0.42,
+      "path": "problem:unsafe-narrowing <-ADDRESSES_PROBLEM- pep:742"
+    },
+    {
+      "step": "traverse",
+      "from": "problem:unsafe-narrowing",
+      "edge": "CONCERNS",
+      "to": "idea:647/enforcing-strict-narrowing",
+      "hop": 1,
+      "path_strength": 0.336,
+      "path": "problem:unsafe-narrowing <-CONCERNS- idea:647/enforcing-strict-narrowing"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:647/enforcing-strict-narrowing",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:647",
+      "hop": 2,
+      "path_strength": 0.181,
+      "path": "problem:unsafe-narrowing <-CONCERNS- idea:647/enforcing-strict-narrowing <-REJECTED_ALTERNATIVE- pep:647"
+    },
+    {
+      "step": "traverse",
+      "from": "problem:unsafe-narrowing",
+      "edge": "CONCERNS",
+      "to": "idea:724/typeguard-with-a-second-output-type",
+      "hop": 1,
+      "path_strength": 0.336,
+      "path": "problem:unsafe-narrowing <-CONCERNS- idea:724/typeguard-with-a-second-output-type"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:724/typeguard-with-a-second-output-type",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:724",
+      "hop": 2,
+      "path_strength": 0.181,
+      "path": "problem:unsafe-narrowing <-CONCERNS- idea:724/typeguard-with-a-second-output-type <-REJECTED_ALTERNATIVE- pep:724"
+    },
+    {
+      "step": "traverse",
+      "from": "problem:unsafe-narrowing",
+      "edge": "CONCERNS",
+      "to": "idea:742/alternative-names",
+      "hop": 1,
+      "path_strength": 0.336,
+      "path": "problem:unsafe-narrowing <-CONCERNS- idea:742/alternative-names"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:742/alternative-names",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:742",
+      "hop": 2,
+      "path_strength": 0.181,
+      "path": "problem:unsafe-narrowing <-CONCERNS- idea:742/alternative-names <-REJECTED_ALTERNATIVE- pep:742"
+    },
+    {
+      "step": "traverse",
+      "from": "problem:unsafe-narrowing",
+      "edge": "CONCERNS",
+      "to": "idea:742/do-nothing",
+      "hop": 1,
+      "path_strength": 0.336,
+      "path": "problem:unsafe-narrowing <-CONCERNS- idea:742/do-nothing"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:742/do-nothing",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:742",
+      "hop": 2,
+      "path_strength": 0.181,
+      "path": "problem:unsafe-narrowing <-CONCERNS- idea:742/do-nothing <-REJECTED_ALTERNATIVE- pep:742"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:742/alternative-names",
+      "edge": "CONCERNS",
+      "to": "pep:724",
+      "hop": 2,
+      "path_strength": 0.202,
+      "path": "construct:typeguard <-CONCERNS- idea:742/alternative-names -CONCERNS-> pep:724"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:742/change-the-behavior-of-typeguard",
+      "edge": "CONCERNS",
+      "to": "pep:647",
+      "hop": 2,
+      "path_strength": 0.259,
+      "path": "construct:typeguard <-CONCERNS- idea:742/change-the-behavior-of-typeguard -CONCERNS-> pep:647"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:742/change-the-behavior-of-typeguard",
+      "edge": "CONCERNS",
+      "to": "pep:724",
+      "hop": 2,
+      "path_strength": 0.259,
+      "path": "construct:typeguard <-CONCERNS- idea:742/change-the-behavior-of-typeguard -CONCERNS-> pep:724"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:742/do-nothing",
+      "edge": "CONCERNS",
+      "to": "pep:724",
+      "hop": 2,
+      "path_strength": 0.202,
+      "path": "construct:typeguard <-CONCERNS- idea:742/do-nothing -CONCERNS-> pep:724"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:724",
+      "edge": "BUILDS_ON",
+      "to": "pep:647",
+      "hop": 2,
+      "path_strength": 0.252,
+      "path": "construct:typeguard <-EXTENDS- pep:724 -BUILDS_ON-> pep:647"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:724",
+      "edge": "SUPERSEDES",
+      "to": "pep:742",
+      "hop": 2,
+      "path_strength": 0.202,
+      "path": "construct:typeguard <-EXTENDS- pep:724 <-SUPERSEDES- pep:742"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:742",
+      "edge": "BUILDS_ON",
+      "to": "pep:647",
+      "hop": 2,
+      "path_strength": 0.252,
+      "path": "construct:typeguard <-EXTENDS- pep:742 -BUILDS_ON-> pep:647"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:742",
+      "edge": "BUILDS_ON",
+      "to": "pep:724",
+      "hop": 2,
+      "path_strength": 0.252,
+      "path": "construct:typeguard <-EXTENDS- pep:742 -BUILDS_ON-> pep:724"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:742",
+      "edge": "SUPERSEDES",
+      "to": "pep:724",
+      "hop": 2,
+      "path_strength": 0.202,
+      "path": "construct:typeguard <-EXTENDS- pep:742 -SUPERSEDES-> pep:724"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:724",
+      "edge": "BUILDS_ON",
+      "to": "pep:647",
+      "hop": 2,
+      "path_strength": 0.252,
+      "path": "problem:unsafe-narrowing <-ADDRESSES_PROBLEM- pep:724 -BUILDS_ON-> pep:647"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:724",
+      "edge": "SUPERSEDES",
+      "to": "pep:742",
+      "hop": 2,
+      "path_strength": 0.202,
+      "path": "problem:unsafe-narrowing <-ADDRESSES_PROBLEM- pep:724 <-SUPERSEDES- pep:742"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:742",
+      "edge": "BUILDS_ON",
+      "to": "pep:647",
+      "hop": 2,
+      "path_strength": 0.252,
+      "path": "problem:unsafe-narrowing <-ADDRESSES_PROBLEM- pep:742 -BUILDS_ON-> pep:647"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:742",
+      "edge": "BUILDS_ON",
+      "to": "pep:724",
+      "hop": 2,
+      "path_strength": 0.252,
+      "path": "problem:unsafe-narrowing <-ADDRESSES_PROBLEM- pep:742 -BUILDS_ON-> pep:724"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:742",
+      "edge": "SUPERSEDES",
+      "to": "pep:724",
+      "hop": 2,
+      "path_strength": 0.202,
+      "path": "problem:unsafe-narrowing <-ADDRESSES_PROBLEM- pep:742 -SUPERSEDES-> pep:724"
+    },
+    {
+      "step": "score",
+      "pep": 647,
+      "formula": "path_sum 2.760 x status[Final]=1.0 x centrality 1.06",
+      "score": 2.923
+    },
+    {
+      "step": "score",
+      "pep": 724,
+      "formula": "path_sum 3.109 x status[Withdrawn]=0.9 x centrality 1.03",
+      "score": 2.881
+    },
+    {
+      "step": "score",
+      "pep": 742,
+      "formula": "path_sum 2.351 x status[Final]=1.0 x centrality 1.00",
+      "score": 2.351
+    },
+    {
+      "step": "infer",
+      "rule": "relevance-filter",
+      "kept": [
+        "idea:647/enforcing-strict-narrowing"
+      ],
+      "dropped": [
+        "idea:647/conditionally-applying-typeguard-type",
+        "idea:724/stricttypeguard",
+        "idea:724/typeguard-with-a-second-output-type",
+        "idea:742/alternative-names",
+        "idea:742/change-the-behavior-of-typeguard",
+        "idea:742/do-nothing"
+      ]
+    },
+    {
+      "step": "infer",
+      "rule": "I1_PRIOR_REJECTION",
+      "fired": true,
+      "inputs": [
+        "idea:647/enforcing-strict-narrowing",
+        "pep:647",
+        "pep:724",
+        "pep:742"
+      ]
+    },
+    {
+      "step": "infer",
+      "rule": "I2_ALREADY_PROVIDED",
+      "fired": true,
+      "inputs": [
+        "construct:typeguard"
+      ]
+    },
+    {
+      "step": "infer",
+      "rule": "I3_DEPENDS_ON",
+      "fired": true,
+      "inputs": [
+        "TypeGuard"
+      ]
+    },
+    {
+      "step": "infer",
+      "rule": "I4_SUPERSEDED_SOURCE",
+      "fired": true,
+      "inputs": [
+        "pep:647",
+        "pep:724",
+        "pep:742"
+      ]
+    },
+    {
+      "step": "infer",
+      "rule": "I5_DESIGN_RATIONALE",
+      "fired": false,
+      "inputs": []
+    },
+    {
+      "step": "infer",
+      "rule": "I6_LATER_RESOLVED",
+      "fired": false,
+      "inputs": [
+        "idea:647/enforcing-strict-narrowing"
+      ]
+    },
+    {
+      "step": "infer",
+      "rule": "I7_EXTENDED_BY",
+      "fired": true,
+      "inputs": [
+        "construct:typeguard"
+      ]
+    },
+    {
+      "step": "output",
+      "verdict": "already_exists",
+      "rule": "see Reasoner.output()"
+    }
+  ]
+}

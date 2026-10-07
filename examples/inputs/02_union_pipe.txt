@@ -1,0 +1,1 @@
+Why does Python use `X | Y` instead of `Union[X, Y]`?

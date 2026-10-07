@@ -1,0 +1,1166 @@
+{
+  "input": "Allow writing callable types with an arrow, like (int, str) -> bool, instead of Callable[[int, str], bool].",
+  "input_type": "proposal",
+  "verdict": "previously_rejected",
+  "summary": "A closely related idea, \"Extended Syntax Supporting Named and Optional Arguments\", was rejected in PEP 677: Another alternative was for a compatible but more complex syntax that could express everything in this PEP but also named, optional, and variadic arguments. A closely related idea, \"Hybrid keyword-arrow Syntax\", was rejected in PEP 677: But we think this might confuse readers into thinking def(A, B) -> C is a lambda, particularly because Javascript's function keyword is used in both named and anonymous functions. A closely related idea, \"Introducing type-strings\", was rejected in PEP 677: We rejected this because it is not as readable, and seems out of step with `guidance <https://mail.python.org/archives/list/python-dev@python.org/message/SZLWVYV2HPLU6AH7DOUD7DWFUGBJGQAY/>`_ from the Steering Council on  A closely related idea, \"Making -> bind tighter than |\", was rejected in PEP 677: In the current proposal, this is a function returning an optional boolean: We considered having -> bind tighter so that instead the expression would parse as ((int, str) -> bool) | None.",
+  "minimum_python_version": "3.10",
+  "matched_entities": [
+    {
+      "id": "syntax:arrow-callable",
+      "type": "Syntax",
+      "label": "arrow syntax for callable types",
+      "strength": 1.0,
+      "matched_on": "pattern /\\)\\s*->\\s*\\w/ on raw input"
+    },
+    {
+      "id": "construct:callable",
+      "type": "Construct",
+      "label": "Callable",
+      "strength": 1.0,
+      "matched_on": "canonical name 'Callable'"
+    }
+  ],
+  "ranked_peps": [
+    {
+      "pep": 677,
+      "title": "Callable Type Syntax",
+      "status": "Rejected",
+      "python_version": "3.11",
+      "in_slice": true,
+      "score": 3.806,
+      "score_breakdown": {
+        "paths": [
+          {
+            "route": "syntax:arrow-callable <-INTRODUCES- pep:677",
+            "strength": 0.6
+          },
+          {
+            "route": "construct:callable <-EXTENDS- pep:677",
+            "strength": 0.42
+          },
+          {
+            "route": "syntax:arrow-callable <-CONCERNS- idea:677/extended-syntax-supporting-named-and-optional-arguments <-REJECTED_ALTERNATIVE- pep:677",
+            "strength": 0.292
+          },
+          {
+            "route": "syntax:arrow-callable <-CONCERNS- idea:677/hybrid-keyword-arrow-syntax <-REJECTED_ALTERNATIVE- pep:677",
+            "strength": 0.292
+          },
+          {
+            "route": "syntax:arrow-callable <-CONCERNS- idea:677/introducing-type-strings <-REJECTED_ALTERNATIVE- pep:677",
+            "strength": 0.292
+          }
+        ],
+        "path_sum": 3.806,
+        "status_weight": 1.0,
+        "centrality": 1.0
+      }
+    },
+    {
+      "pep": 484,
+      "title": "Type Hints",
+      "status": "Final",
+      "python_version": "3.5",
+      "in_slice": true,
+      "score": 1.926,
+      "score_breakdown": {
+        "paths": [
+          {
+            "route": "construct:callable <-INTRODUCES- pep:484",
+            "strength": 0.42
+          },
+          {
+            "route": "syntax:arrow-callable <-INTRODUCES- pep:677 -BUILDS_ON-> pep:484",
+            "strength": 0.36
+          },
+          {
+            "route": "construct:callable <-EXTENDS- pep:612 -BUILDS_ON-> pep:484",
+            "strength": 0.252
+          },
+          {
+            "route": "construct:callable <-EXTENDS- pep:677 -BUILDS_ON-> pep:484",
+            "strength": 0.252
+          }
+        ],
+        "path_sum": 1.284,
+        "status_weight": 1.0,
+        "centrality": 1.5
+      }
+    },
+    {
+      "pep": 612,
+      "title": "Parameter Specification Variables",
+      "status": "Final",
+      "python_version": "3.10",
+      "in_slice": true,
+      "score": 1.752,
+      "score_breakdown": {
+        "paths": [
+          {
+            "route": "construct:callable <-EXTENDS- pep:612",
+            "strength": 0.42
+          },
+          {
+            "route": "syntax:arrow-callable <-INTRODUCES- pep:677 -BUILDS_ON-> pep:612",
+            "strength": 0.288
+          },
+          {
+            "route": "syntax:arrow-callable <-CONCERNS- idea:677/extended-syntax-supporting-named-and-optional-arguments -CONCERNS-> pep:612",
+            "strength": 0.259
+          },
+          {
+            "route": "syntax:arrow-callable <-CONCERNS- idea:677/syntax-closer-to-function-signatures -CONCERNS-> pep:612",
+            "strength": 0.259
+          },
+          {
+            "route": "construct:callable <-CONCERNS- idea:612/defining-parametersof <-REJECTED_ALTERNATIVE- pep:612",
+            "strength": 0.227
+          }
+        ],
+        "path_sum": 1.655,
+        "status_weight": 1.0,
+        "centrality": 1.059
+      }
+    },
+    {
+      "pep": 585,
+      "title": "Type Hinting Generics In Standard Collections",
+      "status": "Final",
+      "python_version": "3.9",
+      "in_slice": true,
+      "score": 0.793,
+      "score_breakdown": {
+        "paths": [
+          {
+            "route": "syntax:arrow-callable <-INTRODUCES- pep:677 -BUILDS_ON-> pep:585",
+            "strength": 0.288
+          },
+          {
+            "route": "construct:callable <-CONCERNS- idea:677/improving-usability-of-the-indexed-callable-type -CONCERNS-> pep:585",
+            "strength": 0.259
+          },
+          {
+            "route": "construct:callable <-EXTENDS- pep:677 -BUILDS_ON-> pep:585",
+            "strength": 0.202
+          }
+        ],
+        "path_sum": 0.749,
+        "status_weight": 1.0,
+        "centrality": 1.059
+      }
+    },
+    {
+      "pep": 604,
+      "title": "Allow writing union types as X | Y",
+      "status": "Final",
+      "python_version": "3.10",
+      "in_slice": true,
+      "score": 0.504,
+      "score_breakdown": {
+        "paths": [
+          {
+            "route": "syntax:arrow-callable <-INTRODUCES- pep:677 -BUILDS_ON-> pep:604",
+            "strength": 0.288
+          },
+          {
+            "route": "construct:callable <-EXTENDS- pep:677 -BUILDS_ON-> pep:604",
+            "strength": 0.202
+          }
+        ],
+        "path_sum": 0.49,
+        "status_weight": 1.0,
+        "centrality": 1.029
+      }
+    },
+    {
+      "pep": 646,
+      "title": "Variadic Generics",
+      "status": "Final",
+      "python_version": "3.11",
+      "in_slice": true,
+      "score": 0.342,
+      "score_breakdown": {
+        "paths": [
+          {
+            "route": "syntax:arrow-callable <-INTRODUCES- pep:677 -BUILDS_ON-> pep:646",
+            "strength": 0.18
+          },
+          {
+            "route": "construct:callable <-EXTENDS- pep:677 -BUILDS_ON-> pep:646",
+            "strength": 0.126
+          }
+        ],
+        "path_sum": 0.306,
+        "status_weight": 1.0,
+        "centrality": 1.118
+      }
+    }
+  ],
+  "conclusions": [
+    {
+      "rule": "I1_PRIOR_REJECTION",
+      "statement": "A closely related idea, \"Extended Syntax Supporting Named and Optional Arguments\", was rejected in PEP 677: Another alternative was for a compatible but more complex syntax that could express everything in this PEP but also named, optional, and variadic arguments.",
+      "confidence": "high",
+      "peps": [
+        677
+      ],
+      "evidence": [
+        {
+          "pep": 677,
+          "section": "Rejected Alternatives > Extended Syntax Supporting Named and Optional Arguments",
+          "rule": "R-CON syntax-in-idea",
+          "snippet": "(int, y: float, *, z: bool = ..., **kwargs: str) -> b"
+        }
+      ]
+    },
+    {
+      "rule": "I1_PRIOR_REJECTION",
+      "statement": "A closely related idea, \"Hybrid keyword-arrow Syntax\", was rejected in PEP 677: But we think this might confuse readers into thinking def(A, B) -> C is a lambda, particularly because Javascript's function keyword is used in both named and anonymous functions.",
+      "confidence": "high",
+      "peps": [
+        677
+      ],
+      "evidence": [
+        {
+          "pep": 677,
+          "section": "Rejected Alternatives > Other Proposals Considered > Hybrid keyword-arrow Syntax",
+          "rule": "R-CON syntax-in-idea",
+          "snippet": "arrow syntax"
+        }
+      ]
+    },
+    {
+      "rule": "I1_PRIOR_REJECTION",
+      "statement": "A closely related idea, \"Introducing type-strings\", was rejected in PEP 677: We rejected this because it is not as readable, and seems out of step with `guidance <https://mail.python.org/archives/list/python-dev@python.org/message/SZLWVYV2HPLU6AH7DOUD7DWFUGBJGQAY/>`_ from the Steering Council on ",
+      "confidence": "high",
+      "peps": [
+        677
+      ],
+      "evidence": [
+        {
+          "pep": 677,
+          "section": "Rejected Alternatives > Other Proposals Considered > Introducing type-strings",
+          "rule": "R-CON syntax-in-idea",
+          "snippet": "t”(int, str) -> bool”"
+        }
+      ]
+    },
+    {
+      "rule": "I1_PRIOR_REJECTION",
+      "statement": "A closely related idea, \"Making -> bind tighter than |\", was rejected in PEP 677: In the current proposal, this is a function returning an optional boolean: We considered having -> bind tighter so that instead the expression would parse as ((int, str) -> bool) | None.",
+      "confidence": "high",
+      "peps": [
+        677
+      ],
+      "evidence": [
+        {
+          "pep": 677,
+          "section": "Rejected Alternatives > Other Proposals Considered > Making ``->`` bind tighter than ``|``",
+          "rule": "R-CON syntax-in-idea",
+          "snippet": "((int, str) -> bool) | None"
+        }
+      ]
+    },
+    {
+      "rule": "I1_PRIOR_REJECTION",
+      "statement": "PEP 677 (\"Callable Type Syntax\") proposed arrow syntax for callable types and its status is Rejected.",
+      "confidence": "high",
+      "peps": [
+        677
+      ],
+      "evidence": [
+        {
+          "pep": 677,
+          "section": "Header",
+          "rule": "status",
+          "snippet": "Status: Rejected"
+        }
+      ]
+    },
+    {
+      "rule": "I2_ALREADY_PROVIDED",
+      "statement": "Callable already exists: introduced by PEP 484 (\"Type Hints\"), available since Python 3.5.",
+      "confidence": "medium",
+      "peps": [
+        484
+      ],
+      "evidence": [
+        {
+          "pep": 484,
+          "section": "Type Definition Syntax > Callable",
+          "rule": "R-INT section-heading",
+          "snippet": "Heading: Callable"
+        },
+        {
+          "pep": 484,
+          "section": "Type Definition Syntax > Acceptable type hints",
+          "rule": "R-INT earliest-mention",
+          "snippet": "uses ``Callable``"
+        }
+      ]
+    },
+    {
+      "rule": "I7_EXTENDED_BY",
+      "statement": "Callable was later extended by PEP 612 (\"Parameter Specification Variables\", Python 3.10) adding Concatenate, ParamSpec.",
+      "confidence": "medium",
+      "peps": [
+        612
+      ],
+      "evidence": [
+        {
+          "pep": 612,
+          "section": "Abstract",
+          "rule": "R-EXT title/abstract-mention",
+          "snippet": "mentions ``Callable[[int, str], bool]``"
+        }
+      ]
+    },
+    {
+      "rule": "I3_DEPENDS_ON",
+      "statement": "Builds on Callable (PEP 484, Python 3.5); PEP 585 (Type Hinting Generics In Standard Collections) (PEP 585, Python 3.9); PEP 604 (Allow writing union types as X | Y) (PEP 604, Python 3.10); PEP 612 (Parameter Specification Variables) (PEP 612, Python 3.10). Minimum Python version implied: 3.10.",
+      "confidence": "high",
+      "peps": [
+        484,
+        585,
+        604,
+        612
+      ],
+      "evidence": [
+        {
+          "pep": 484,
+          "section": "Header",
+          "rule": "R-VER Python-Version",
+          "snippet": "Python-Version: 3.5"
+        },
+        {
+          "pep": 585,
+          "section": "Header",
+          "rule": "R-VER Python-Version",
+          "snippet": "Python-Version: 3.9"
+        },
+        {
+          "pep": 604,
+          "section": "Header",
+          "rule": "R-VER Python-Version",
+          "snippet": "Python-Version: 3.10"
+        },
+        {
+          "pep": 612,
+          "section": "Header",
+          "rule": "R-VER Python-Version",
+          "snippet": "Python-Version: 3.10"
+        }
+      ]
+    }
+  ],
+  "citations": [
+    {
+      "pep": 484,
+      "title": "Type Hints",
+      "status": "Final",
+      "url": "https://peps.python.org/pep-0484/",
+      "used_for": [
+        "I2_ALREADY_PROVIDED",
+        "I3_DEPENDS_ON",
+        "ranked"
+      ],
+      "sections": [
+        "Header",
+        "Type Definition Syntax > Acceptable type hints",
+        "Type Definition Syntax > Callable"
+      ]
+    },
+    {
+      "pep": 585,
+      "title": "Type Hinting Generics In Standard Collections",
+      "status": "Final",
+      "url": "https://peps.python.org/pep-0585/",
+      "used_for": [
+        "I3_DEPENDS_ON",
+        "ranked"
+      ],
+      "sections": [
+        "Header"
+      ]
+    },
+    {
+      "pep": 604,
+      "title": "Allow writing union types as X | Y",
+      "status": "Final",
+      "url": "https://peps.python.org/pep-0604/",
+      "used_for": [
+        "I3_DEPENDS_ON",
+        "ranked"
+      ],
+      "sections": [
+        "Header"
+      ]
+    },
+    {
+      "pep": 612,
+      "title": "Parameter Specification Variables",
+      "status": "Final",
+      "url": "https://peps.python.org/pep-0612/",
+      "used_for": [
+        "I3_DEPENDS_ON",
+        "I7_EXTENDED_BY",
+        "ranked"
+      ],
+      "sections": [
+        "Abstract",
+        "Header"
+      ]
+    },
+    {
+      "pep": 646,
+      "title": "Variadic Generics",
+      "status": "Final",
+      "url": "https://peps.python.org/pep-0646/",
+      "used_for": [
+        "ranked"
+      ],
+      "sections": []
+    },
+    {
+      "pep": 677,
+      "title": "Callable Type Syntax",
+      "status": "Rejected",
+      "url": "https://peps.python.org/pep-0677/",
+      "used_for": [
+        "I1_PRIOR_REJECTION",
+        "ranked"
+      ],
+      "sections": [
+        "Header",
+        "Rejected Alternatives > Extended Syntax Supporting Named and Optional Arguments",
+        "Rejected Alternatives > Other Proposals Considered > Hybrid keyword-arrow Syntax",
+        "Rejected Alternatives > Other Proposals Considered > Introducing type-strings",
+        "Rejected Alternatives > Other Proposals Considered > Making ``->`` bind tighter than ``|``"
+      ]
+    }
+  ],
+  "trace": [
+    {
+      "step": "classify",
+      "result": "proposal",
+      "rule": "starts with a proposal verb (add/allow/introduce/...)"
+    },
+    {
+      "step": "match",
+      "entity": "syntax:arrow-callable",
+      "strength": 1.0,
+      "via": "pattern /\\)\\s*->\\s*\\w/ on raw input"
+    },
+    {
+      "step": "match",
+      "entity": "construct:callable",
+      "strength": 1.0,
+      "via": "canonical name 'Callable'"
+    },
+    {
+      "step": "traverse",
+      "from": "syntax:arrow-callable",
+      "edge": "INTRODUCES",
+      "to": "pep:677",
+      "hop": 1,
+      "path_strength": 0.6,
+      "path": "syntax:arrow-callable <-INTRODUCES- pep:677"
+    },
+    {
+      "step": "traverse",
+      "from": "syntax:arrow-callable",
+      "edge": "CONCERNS",
+      "to": "idea:677/extended-syntax-supporting-named-and-optional-arguments",
+      "hop": 1,
+      "path_strength": 0.54,
+      "path": "syntax:arrow-callable <-CONCERNS- idea:677/extended-syntax-supporting-named-and-optional-arguments"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:677/extended-syntax-supporting-named-and-optional-arguments",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:677",
+      "hop": 2,
+      "path_strength": 0.292,
+      "path": "syntax:arrow-callable <-CONCERNS- idea:677/extended-syntax-supporting-named-and-optional-arguments <-REJECTED_ALTERNATIVE- pep:677"
+    },
+    {
+      "step": "traverse",
+      "from": "syntax:arrow-callable",
+      "edge": "CONCERNS",
+      "to": "idea:677/hybrid-keyword-arrow-syntax",
+      "hop": 1,
+      "path_strength": 0.54,
+      "path": "syntax:arrow-callable <-CONCERNS- idea:677/hybrid-keyword-arrow-syntax"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:677/hybrid-keyword-arrow-syntax",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:677",
+      "hop": 2,
+      "path_strength": 0.292,
+      "path": "syntax:arrow-callable <-CONCERNS- idea:677/hybrid-keyword-arrow-syntax <-REJECTED_ALTERNATIVE- pep:677"
+    },
+    {
+      "step": "traverse",
+      "from": "syntax:arrow-callable",
+      "edge": "CONCERNS",
+      "to": "idea:677/introducing-type-strings",
+      "hop": 1,
+      "path_strength": 0.54,
+      "path": "syntax:arrow-callable <-CONCERNS- idea:677/introducing-type-strings"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:677/introducing-type-strings",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:677",
+      "hop": 2,
+      "path_strength": 0.292,
+      "path": "syntax:arrow-callable <-CONCERNS- idea:677/introducing-type-strings <-REJECTED_ALTERNATIVE- pep:677"
+    },
+    {
+      "step": "traverse",
+      "from": "syntax:arrow-callable",
+      "edge": "CONCERNS",
+      "to": "idea:677/making-bind-tighter-than",
+      "hop": 1,
+      "path_strength": 0.54,
+      "path": "syntax:arrow-callable <-CONCERNS- idea:677/making-bind-tighter-than"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:677/making-bind-tighter-than",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:677",
+      "hop": 2,
+      "path_strength": 0.292,
+      "path": "syntax:arrow-callable <-CONCERNS- idea:677/making-bind-tighter-than <-REJECTED_ALTERNATIVE- pep:677"
+    },
+    {
+      "step": "traverse",
+      "from": "syntax:arrow-callable",
+      "edge": "CONCERNS",
+      "to": "idea:677/requiring-outer-parentheses",
+      "hop": 1,
+      "path_strength": 0.54,
+      "path": "syntax:arrow-callable <-CONCERNS- idea:677/requiring-outer-parentheses"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:677/requiring-outer-parentheses",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:677",
+      "hop": 2,
+      "path_strength": 0.292,
+      "path": "syntax:arrow-callable <-CONCERNS- idea:677/requiring-outer-parentheses <-REJECTED_ALTERNATIVE- pep:677"
+    },
+    {
+      "step": "traverse",
+      "from": "syntax:arrow-callable",
+      "edge": "CONCERNS",
+      "to": "idea:677/syntax-closer-to-function-signatures",
+      "hop": 1,
+      "path_strength": 0.54,
+      "path": "syntax:arrow-callable <-CONCERNS- idea:677/syntax-closer-to-function-signatures"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:677/syntax-closer-to-function-signatures",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:677",
+      "hop": 2,
+      "path_strength": 0.292,
+      "path": "syntax:arrow-callable <-CONCERNS- idea:677/syntax-closer-to-function-signatures <-REJECTED_ALTERNATIVE- pep:677"
+    },
+    {
+      "step": "traverse",
+      "from": "syntax:arrow-callable",
+      "edge": "CONCERNS",
+      "to": "idea:677/using-the-plain-return-type-in-args",
+      "hop": 1,
+      "path_strength": 0.54,
+      "path": "syntax:arrow-callable <-CONCERNS- idea:677/using-the-plain-return-type-in-args"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:677/using-the-plain-return-type-in-args",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:677",
+      "hop": 2,
+      "path_strength": 0.292,
+      "path": "syntax:arrow-callable <-CONCERNS- idea:677/using-the-plain-return-type-in-args <-REJECTED_ALTERNATIVE- pep:677"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:callable",
+      "edge": "INTRODUCES",
+      "to": "pep:484",
+      "hop": 1,
+      "path_strength": 0.42,
+      "path": "construct:callable <-INTRODUCES- pep:484"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:callable",
+      "edge": "EXTENDS",
+      "to": "pep:612",
+      "hop": 1,
+      "path_strength": 0.42,
+      "path": "construct:callable <-EXTENDS- pep:612"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:callable",
+      "edge": "EXTENDS",
+      "to": "pep:677",
+      "hop": 1,
+      "path_strength": 0.42,
+      "path": "construct:callable <-EXTENDS- pep:677"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:callable",
+      "edge": "CONCERNS",
+      "to": "idea:593/using-type-ann1-ann2-instead-of-annotated",
+      "hop": 1,
+      "path_strength": 0.42,
+      "path": "construct:callable <-CONCERNS- idea:593/using-type-ann1-ann2-instead-of-annotated"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:593/using-type-ann1-ann2-instead-of-annotated",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:593",
+      "hop": 2,
+      "path_strength": 0.227,
+      "path": "construct:callable <-CONCERNS- idea:593/using-type-ann1-ann2-instead-of-annotated <-REJECTED_ALTERNATIVE- pep:593"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:callable",
+      "edge": "CONCERNS",
+      "to": "idea:612/defining-parametersof",
+      "hop": 1,
+      "path_strength": 0.42,
+      "path": "construct:callable <-CONCERNS- idea:612/defining-parametersof"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:612/defining-parametersof",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:612",
+      "hop": 2,
+      "path_strength": 0.227,
+      "path": "construct:callable <-CONCERNS- idea:612/defining-parametersof <-REJECTED_ALTERNATIVE- pep:612"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:callable",
+      "edge": "CONCERNS",
+      "to": "idea:677/functions-as-types",
+      "hop": 1,
+      "path_strength": 0.42,
+      "path": "construct:callable <-CONCERNS- idea:677/functions-as-types"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:677/functions-as-types",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:677",
+      "hop": 2,
+      "path_strength": 0.227,
+      "path": "construct:callable <-CONCERNS- idea:677/functions-as-types <-REJECTED_ALTERNATIVE- pep:677"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:callable",
+      "edge": "CONCERNS",
+      "to": "idea:677/improving-usability-of-the-indexed-callable-type",
+      "hop": 1,
+      "path_strength": 0.54,
+      "path": "construct:callable <-CONCERNS- idea:677/improving-usability-of-the-indexed-callable-type"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:677/improving-usability-of-the-indexed-callable-type",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:677",
+      "hop": 2,
+      "path_strength": 0.292,
+      "path": "construct:callable <-CONCERNS- idea:677/improving-usability-of-the-indexed-callable-type <-REJECTED_ALTERNATIVE- pep:677"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:callable",
+      "edge": "CONCERNS",
+      "to": "idea:677/using-the-plain-return-type-in-args",
+      "hop": 1,
+      "path_strength": 0.42,
+      "path": "construct:callable <-CONCERNS- idea:677/using-the-plain-return-type-in-args"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:677/using-the-plain-return-type-in-args",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:677",
+      "hop": 2,
+      "path_strength": 0.227,
+      "path": "construct:callable <-CONCERNS- idea:677/using-the-plain-return-type-in-args <-REJECTED_ALTERNATIVE- pep:677"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:callable",
+      "edge": "CONCERNS",
+      "to": "idea:681/converter-field-specifier-parameter",
+      "hop": 1,
+      "path_strength": 0.42,
+      "path": "construct:callable <-CONCERNS- idea:681/converter-field-specifier-parameter"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:681/converter-field-specifier-parameter",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:681",
+      "hop": 2,
+      "path_strength": 0.227,
+      "path": "construct:callable <-CONCERNS- idea:681/converter-field-specifier-parameter <-REJECTED_ALTERNATIVE- pep:681"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:677/extended-syntax-supporting-named-and-optional-arguments",
+      "edge": "CONCERNS",
+      "to": "pep:612",
+      "hop": 2,
+      "path_strength": 0.259,
+      "path": "syntax:arrow-callable <-CONCERNS- idea:677/extended-syntax-supporting-named-and-optional-arguments -CONCERNS-> pep:612"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:677/syntax-closer-to-function-signatures",
+      "edge": "CONCERNS",
+      "to": "pep:612",
+      "hop": 2,
+      "path_strength": 0.259,
+      "path": "syntax:arrow-callable <-CONCERNS- idea:677/syntax-closer-to-function-signatures -CONCERNS-> pep:612"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:677/improving-usability-of-the-indexed-callable-type",
+      "edge": "CONCERNS",
+      "to": "pep:585",
+      "hop": 2,
+      "path_strength": 0.259,
+      "path": "construct:callable <-CONCERNS- idea:677/improving-usability-of-the-indexed-callable-type -CONCERNS-> pep:585"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:677",
+      "edge": "BUILDS_ON",
+      "to": "pep:484",
+      "hop": 2,
+      "path_strength": 0.36,
+      "path": "syntax:arrow-callable <-INTRODUCES- pep:677 -BUILDS_ON-> pep:484"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:677",
+      "edge": "BUILDS_ON",
+      "to": "pep:585",
+      "hop": 2,
+      "path_strength": 0.288,
+      "path": "syntax:arrow-callable <-INTRODUCES- pep:677 -BUILDS_ON-> pep:585"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:677",
+      "edge": "BUILDS_ON",
+      "to": "pep:604",
+      "hop": 2,
+      "path_strength": 0.288,
+      "path": "syntax:arrow-callable <-INTRODUCES- pep:677 -BUILDS_ON-> pep:604"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:677",
+      "edge": "BUILDS_ON",
+      "to": "pep:612",
+      "hop": 2,
+      "path_strength": 0.288,
+      "path": "syntax:arrow-callable <-INTRODUCES- pep:677 -BUILDS_ON-> pep:612"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:677",
+      "edge": "BUILDS_ON",
+      "to": "pep:646",
+      "hop": 2,
+      "path_strength": 0.18,
+      "path": "syntax:arrow-callable <-INTRODUCES- pep:677 -BUILDS_ON-> pep:646"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:3107",
+      "hop": 2,
+      "path_strength": 0.252,
+      "path": "construct:callable <-INTRODUCES- pep:484 -BUILDS_ON-> pep:3107"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:3141",
+      "hop": 2,
+      "path_strength": 0.126,
+      "path": "construct:callable <-INTRODUCES- pep:484 -BUILDS_ON-> pep:3141"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:333",
+      "hop": 2,
+      "path_strength": 0.252,
+      "path": "construct:callable <-INTRODUCES- pep:484 -BUILDS_ON-> pep:333"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:443",
+      "hop": 2,
+      "path_strength": 0.126,
+      "path": "construct:callable <-INTRODUCES- pep:484 -BUILDS_ON-> pep:443"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:482",
+      "hop": 2,
+      "path_strength": 0.252,
+      "path": "construct:callable <-INTRODUCES- pep:484 -BUILDS_ON-> pep:482"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:483",
+      "hop": 2,
+      "path_strength": 0.252,
+      "path": "construct:callable <-INTRODUCES- pep:484 -BUILDS_ON-> pep:483"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:492",
+      "hop": 2,
+      "path_strength": 0.202,
+      "path": "construct:callable <-INTRODUCES- pep:484 -BUILDS_ON-> pep:492"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:526",
+      "hop": 2,
+      "path_strength": 0.126,
+      "path": "construct:callable <-INTRODUCES- pep:484 -BUILDS_ON-> pep:526"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:561",
+      "hop": 2,
+      "path_strength": 0.126,
+      "path": "construct:callable <-INTRODUCES- pep:484 -BUILDS_ON-> pep:561"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:612",
+      "edge": "BUILDS_ON",
+      "to": "pep:484",
+      "hop": 2,
+      "path_strength": 0.252,
+      "path": "construct:callable <-EXTENDS- pep:612 -BUILDS_ON-> pep:484"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:612",
+      "edge": "BUILDS_ON",
+      "to": "pep:544",
+      "hop": 2,
+      "path_strength": 0.252,
+      "path": "construct:callable <-EXTENDS- pep:612 -BUILDS_ON-> pep:544"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:677",
+      "edge": "BUILDS_ON",
+      "to": "pep:484",
+      "hop": 2,
+      "path_strength": 0.252,
+      "path": "construct:callable <-EXTENDS- pep:677 -BUILDS_ON-> pep:484"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:677",
+      "edge": "BUILDS_ON",
+      "to": "pep:585",
+      "hop": 2,
+      "path_strength": 0.202,
+      "path": "construct:callable <-EXTENDS- pep:677 -BUILDS_ON-> pep:585"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:677",
+      "edge": "BUILDS_ON",
+      "to": "pep:604",
+      "hop": 2,
+      "path_strength": 0.202,
+      "path": "construct:callable <-EXTENDS- pep:677 -BUILDS_ON-> pep:604"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:677",
+      "edge": "BUILDS_ON",
+      "to": "pep:612",
+      "hop": 2,
+      "path_strength": 0.202,
+      "path": "construct:callable <-EXTENDS- pep:677 -BUILDS_ON-> pep:612"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:677",
+      "edge": "BUILDS_ON",
+      "to": "pep:646",
+      "hop": 2,
+      "path_strength": 0.126,
+      "path": "construct:callable <-EXTENDS- pep:677 -BUILDS_ON-> pep:646"
+    },
+    {
+      "step": "score",
+      "pep": 677,
+      "formula": "path_sum 3.806 x status[Rejected]=1.0 x centrality 1.00",
+      "score": 3.806
+    },
+    {
+      "step": "score",
+      "pep": 484,
+      "formula": "path_sum 1.284 x status[Final]=1.0 x centrality 1.50",
+      "score": 1.926
+    },
+    {
+      "step": "score",
+      "pep": 612,
+      "formula": "path_sum 1.655 x status[Final]=1.0 x centrality 1.06",
+      "score": 1.752
+    },
+    {
+      "step": "score",
+      "pep": 593,
+      "formula": "path_sum 0.227 x status[Final]=1.0 x centrality 1.00",
+      "score": 0.227
+    },
+    {
+      "step": "score",
+      "pep": 681,
+      "formula": "path_sum 0.227 x status[Final]=1.0 x centrality 1.00",
+      "score": 0.227
+    },
+    {
+      "step": "score",
+      "pep": 585,
+      "formula": "path_sum 0.749 x status[Final]=1.0 x centrality 1.06",
+      "score": 0.793
+    },
+    {
+      "step": "score",
+      "pep": 604,
+      "formula": "path_sum 0.490 x status[Final]=1.0 x centrality 1.03",
+      "score": 0.504
+    },
+    {
+      "step": "score",
+      "pep": 646,
+      "formula": "path_sum 0.306 x status[Final]=1.0 x centrality 1.12",
+      "score": 0.342
+    },
+    {
+      "step": "score",
+      "pep": 3107,
+      "formula": "path_sum 0.252 x status[None]=0.3 x centrality 1.18",
+      "score": 0.089
+    },
+    {
+      "step": "score",
+      "pep": 3141,
+      "formula": "path_sum 0.126 x status[None]=0.3 x centrality 1.03",
+      "score": 0.039
+    },
+    {
+      "step": "score",
+      "pep": 333,
+      "formula": "path_sum 0.252 x status[None]=0.3 x centrality 1.03",
+      "score": 0.078
+    },
+    {
+      "step": "score",
+      "pep": 443,
+      "formula": "path_sum 0.126 x status[None]=0.3 x centrality 1.03",
+      "score": 0.039
+    },
+    {
+      "step": "score",
+      "pep": 482,
+      "formula": "path_sum 0.252 x status[None]=0.3 x centrality 1.03",
+      "score": 0.078
+    },
+    {
+      "step": "score",
+      "pep": 483,
+      "formula": "path_sum 0.252 x status[Final]=1.0 x centrality 1.12",
+      "score": 0.282
+    },
+    {
+      "step": "score",
+      "pep": 492,
+      "formula": "path_sum 0.202 x status[None]=0.3 x centrality 1.03",
+      "score": 0.062
+    },
+    {
+      "step": "score",
+      "pep": 526,
+      "formula": "path_sum 0.126 x status[Final]=1.0 x centrality 1.24",
+      "score": 0.156
+    },
+    {
+      "step": "score",
+      "pep": 561,
+      "formula": "path_sum 0.126 x status[Final]=1.0 x centrality 1.03",
+      "score": 0.13
+    },
+    {
+      "step": "score",
+      "pep": 544,
+      "formula": "path_sum 0.252 x status[Final]=1.0 x centrality 1.15",
+      "score": 0.289
+    },
+    {
+      "step": "infer",
+      "rule": "relevance-filter",
+      "kept": [
+        "idea:677/extended-syntax-supporting-named-and-optional-arguments",
+        "idea:677/hybrid-keyword-arrow-syntax",
+        "idea:677/introducing-type-strings",
+        "idea:677/making-bind-tighter-than",
+        "idea:677/requiring-outer-parentheses",
+        "idea:677/syntax-closer-to-function-signatures",
+        "idea:677/using-the-plain-return-type-in-args"
+      ],
+      "dropped": [
+        "idea:593/using-type-ann1-ann2-instead-of-annotated",
+        "idea:612/defining-parametersof",
+        "idea:677/functions-as-types",
+        "idea:677/improving-usability-of-the-indexed-callable-type",
+        "idea:681/converter-field-specifier-parameter"
+      ]
+    },
+    {
+      "step": "infer",
+      "rule": "I1_PRIOR_REJECTION",
+      "fired": true,
+      "inputs": [
+        "idea:677/extended-syntax-supporting-named-and-optional-arguments",
+        "idea:677/hybrid-keyword-arrow-syntax",
+        "idea:677/introducing-type-strings",
+        "idea:677/making-bind-tighter-than",
+        "idea:677/requiring-outer-parentheses",
+        "idea:677/syntax-closer-to-function-signatures",
+        "pep:677",
+        "pep:484",
+        "pep:612",
+        "pep:585",
+        "pep:604",
+        "pep:646"
+      ]
+    },
+    {
+      "step": "infer",
+      "rule": "I2_ALREADY_PROVIDED",
+      "fired": true,
+      "inputs": [
+        "syntax:arrow-callable",
+        "construct:callable"
+      ]
+    },
+    {
+      "step": "infer",
+      "rule": "I3_DEPENDS_ON",
+      "fired": true,
+      "inputs": [
+        "Callable",
+        "PEP 484 (Type Hints)",
+        "PEP 585 (Type Hinting Generics In Standard Collections)",
+        "PEP 604 (Allow writing union types as X | Y)",
+        "PEP 612 (Parameter Specification Variables)"
+      ]
+    },
+    {
+      "step": "infer",
+      "rule": "I4_SUPERSEDED_SOURCE",
+      "fired": false,
+      "inputs": [
+        "pep:677",
+        "pep:484",
+        "pep:612",
+        "pep:585",
+        "pep:604",
+        "pep:646",
+        "pep:544",
+        "pep:483",
+        "pep:593",
+        "pep:681",
+        "pep:526"
+      ]
+    },
+    {
+      "step": "infer",
+      "rule": "I5_DESIGN_RATIONALE",
+      "fired": false,
+      "inputs": []
+    },
+    {
+      "step": "infer",
+      "rule": "I6_LATER_RESOLVED",
+      "fired": false,
+      "inputs": [
+        "idea:677/extended-syntax-supporting-named-and-optional-arguments",
+        "idea:677/hybrid-keyword-arrow-syntax",
+        "idea:677/introducing-type-strings",
+        "idea:677/making-bind-tighter-than",
+        "idea:677/requiring-outer-parentheses",
+        "idea:677/syntax-closer-to-function-signatures"
+      ]
+    },
+    {
+      "step": "infer",
+      "rule": "I7_EXTENDED_BY",
+      "fired": true,
+      "inputs": [
+        "syntax:arrow-callable",
+        "construct:callable"
+      ]
+    },
+    {
+      "step": "output",
+      "verdict": "previously_rejected",
+      "rule": "see Reasoner.output()"
+    }
+  ]
+}

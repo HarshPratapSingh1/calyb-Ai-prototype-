@@ -1,0 +1,1211 @@
+{
+  "input": "Was it ever rejected to let a TypedDict mark individual keys as required or optional, and if so, can I do it now and since which Python version?",
+  "input_type": "question",
+  "verdict": "explained",
+  "summary": "TypedDict was introduced by PEP 589 (\"TypedDict: Type Hints for Dictionaries with a Fixed Set of Keys\", Python 3.8) to address: dict value types depend on the key (JSON-like objects). Alternatives considered and turned down along the way: \"There is no way to individually specify whether each key is required or not.\" (PEP 589: No proposed syntax was clear enough, and we expect that there is limited need for this.); \"TypedDict can't be used for specifying the type of a kwargs argument.\" (PEP 589: TypedDict can't be used for specifying the type of a kwargs argument.); \"TypedDict doesn't support providing a default value type for keys that are not explicitly…\" (PEP 589: TypedDict doesn't support providing a default value type for keys that are not explicitly defined.) PEP 589 left this out (\"There is no way to individually specify whether each key is required or not.\": No proposed syntax was clear enough, and we expect that there is limited need for this.); PEP 655 (\"Marking individual TypedDict items as required or potentially-missing\") later delivered it (a TypedDict cannot mark individual keys as required or optional) in Python 3.11. A closely related idea, \"Special syntax around the key of a TypedDict item\", was rejected in PEP 655: : This notation would require Python grammar changes and it is not believed that marking TypedDict items as required or potentially-missing would meet the high bar required to make such grammar changes. A closely related idea, \"Preventing unspecified keys in TypedDicts\", was rejected in PEP 705: Technically, however, this code is unsound: B does not declare foo, but instances of B may still have the key present, and the associated value may be of any type: mypy rejects the definition of get_field on the marked l",
+  "minimum_python_version": "3.11",
+  "matched_entities": [
+    {
+      "id": "construct:typeddict",
+      "type": "Construct",
+      "label": "TypedDict",
+      "strength": 1.0,
+      "matched_on": "canonical name 'TypedDict'"
+    },
+    {
+      "id": "problem:typeddict-partial-keys",
+      "type": "Problem",
+      "label": "a TypedDict cannot mark individual keys as required or optional",
+      "strength": 0.7,
+      "matched_on": "alias 'required or optional'"
+    },
+    {
+      "id": "idea:589/there-is-no-way-to-individually-specify",
+      "type": "RejectedIdea",
+      "label": "There is no way to individually specify whether each key is required or not. (PEP 589, postponed)",
+      "strength": 0.48,
+      "matched_on": "title keywords overlap 0.60 (individual, key, requir)"
+    },
+    {
+      "id": "idea:655/marking-required-or-potentially-missing-keys-with",
+      "type": "RejectedIdea",
+      "label": "Marking required or potentially-missing keys with an operator (PEP 655, rejected)",
+      "strength": 0.4,
+      "matched_on": "title keywords overlap 0.50 (key, mark, requir)"
+    },
+    {
+      "id": "idea:705/preventing-unspecified-keys-in-typeddicts",
+      "type": "RejectedIdea",
+      "label": "Preventing unspecified keys in TypedDicts (PEP 705, rejected)",
+      "strength": 0.4,
+      "matched_on": "title keywords overlap 0.50 (key, typeddict)"
+    }
+  ],
+  "ranked_peps": [
+    {
+      "pep": 589,
+      "title": "TypedDict: Type Hints for Dictionaries with a Fixed Set of Keys",
+      "status": "Final",
+      "python_version": "3.8",
+      "in_slice": true,
+      "score": 4.043,
+      "score_breakdown": {
+        "paths": [
+          {
+            "route": "construct:typeddict <-INTRODUCES- pep:589",
+            "strength": 0.6
+          },
+          {
+            "route": "construct:typeddict <-CONCERNS- idea:589/typeddict-can-t-be-used-for-specifying <-REJECTED_ALTERNATIVE- pep:589",
+            "strength": 0.292
+          },
+          {
+            "route": "construct:typeddict <-CONCERNS- idea:589/typeddict-doesn-t-support-providing-a-default <-REJECTED_ALTERNATIVE- pep:589",
+            "strength": 0.292
+          },
+          {
+            "route": "construct:typeddict <-CONCERNS- idea:589/typeddict-isn-t-extensible-and-it-addresses <-REJECTED_ALTERNATIVE- pep:589",
+            "strength": 0.292
+          },
+          {
+            "route": "construct:typeddict <-CONCERNS- idea:589/typeddict-type-definitions-could-plausibly-used-to <-REJECTED_ALTERNATIVE- pep:589",
+            "strength": 0.292
+          }
+        ],
+        "path_sum": 3.715,
+        "status_weight": 1.0,
+        "centrality": 1.088
+      }
+    },
+    {
+      "pep": 655,
+      "title": "Marking individual TypedDict items as required or potentially-missing",
+      "status": "Final",
+      "python_version": "3.11",
+      "in_slice": true,
+      "score": 2.076,
+      "score_breakdown": {
+        "paths": [
+          {
+            "route": "construct:typeddict <-EXTENDS- pep:655",
+            "strength": 0.42
+          },
+          {
+            "route": "problem:typeddict-partial-keys <-ADDRESSES_PROBLEM- pep:655",
+            "strength": 0.42
+          },
+          {
+            "route": "construct:typeddict <-CONCERNS- idea:655/special-syntax-around-the-key-of-a <-REJECTED_ALTERNATIVE- pep:655",
+            "strength": 0.292
+          },
+          {
+            "route": "idea:655/marking-required-or-potentially-missing-keys-with <-REJECTED_ALTERNATIVE- pep:655",
+            "strength": 0.216
+          },
+          {
+            "route": "construct:typeddict <-EXTENDS- pep:705 -BUILDS_ON-> pep:655",
+            "strength": 0.202
+          }
+        ],
+        "path_sum": 1.96,
+        "status_weight": 1.0,
+        "centrality": 1.059
+      }
+    },
+    {
+      "pep": 484,
+      "title": "Type Hints",
+      "status": "Final",
+      "python_version": "3.5",
+      "in_slice": true,
+      "score": 1.162,
+      "score_breakdown": {
+        "paths": [
+          {
+            "route": "construct:typeddict <-INTRODUCES- pep:589 -BUILDS_ON-> pep:484",
+            "strength": 0.36
+          },
+          {
+            "route": "construct:typeddict <-CONCERNS- idea:589/typeddict-can-t-be-used-for-specifying -CONCERNS-> pep:484",
+            "strength": 0.259
+          },
+          {
+            "route": "idea:589/there-is-no-way-to-individually-specify <-REJECTED_ALTERNATIVE- pep:589 -BUILDS_ON-> pep:484",
+            "strength": 0.156
+          }
+        ],
+        "path_sum": 0.775,
+        "status_weight": 1.0,
+        "centrality": 1.5
+      }
+    },
+    {
+      "pep": 705,
+      "title": "TypedDict: Read-only items",
+      "status": "Final",
+      "python_version": "3.13",
+      "in_slice": true,
+      "score": 1.154,
+      "score_breakdown": {
+        "paths": [
+          {
+            "route": "construct:typeddict <-EXTENDS- pep:705",
+            "strength": 0.42
+          },
+          {
+            "route": "construct:typeddict <-CONCERNS- idea:705/preventing-unspecified-keys-in-typeddicts <-REJECTED_ALTERNATIVE- pep:705",
+            "strength": 0.292
+          },
+          {
+            "route": "construct:typeddict <-CONCERNS- idea:705/reusing-the-final-annotation <-REJECTED_ALTERNATIVE- pep:705",
+            "strength": 0.227
+          },
+          {
+            "route": "idea:705/preventing-unspecified-keys-in-typeddicts <-REJECTED_ALTERNATIVE- pep:705",
+            "strength": 0.216
+          }
+        ],
+        "path_sum": 1.154,
+        "status_weight": 1.0,
+        "centrality": 1.0
+      }
+    },
+    {
+      "pep": 692,
+      "title": "Using TypedDict for more precise **kwargs typing",
+      "status": "Final",
+      "python_version": "3.12",
+      "in_slice": true,
+      "score": 0.929,
+      "score_breakdown": {
+        "paths": [
+          {
+            "route": "construct:typeddict <-EXTENDS- pep:692",
+            "strength": 0.42
+          },
+          {
+            "route": "construct:typeddict <-CONCERNS- idea:692/typeddict-unions <-REJECTED_ALTERNATIVE- pep:692",
+            "strength": 0.292
+          },
+          {
+            "route": "construct:typeddict <-EXTENDS- pep:705 -BUILDS_ON-> pep:692",
+            "strength": 0.126
+          },
+          {
+            "route": "idea:705/preventing-unspecified-keys-in-typeddicts <-REJECTED_ALTERNATIVE- pep:705 -BUILDS_ON-> pep:692",
+            "strength": 0.065
+          }
+        ],
+        "path_sum": 0.902,
+        "status_weight": 1.0,
+        "centrality": 1.029
+      }
+    },
+    {
+      "pep": 591,
+      "title": "Adding a final qualifier to typing",
+      "status": "Final",
+      "python_version": "3.8",
+      "in_slice": true,
+      "score": 0.709,
+      "score_breakdown": {
+        "paths": [
+          {
+            "route": "construct:typeddict <-CONCERNS- idea:705/reusing-the-final-annotation -CONCERNS-> pep:591",
+            "strength": 0.202
+          },
+          {
+            "route": "idea:705/preventing-unspecified-keys-in-typeddicts -CONCERNS-> pep:591",
+            "strength": 0.192
+          },
+          {
+            "route": "construct:typeddict <-INTRODUCES- pep:589 -BUILDS_ON-> pep:591",
+            "strength": 0.18
+          },
+          {
+            "route": "idea:589/there-is-no-way-to-individually-specify <-REJECTED_ALTERNATIVE- pep:589 -BUILDS_ON-> pep:591",
+            "strength": 0.078
+          }
+        ],
+        "path_sum": 0.651,
+        "status_weight": 1.0,
+        "centrality": 1.088
+      }
+    }
+  ],
+  "conclusions": [
+    {
+      "rule": "I5_DESIGN_RATIONALE",
+      "statement": "TypedDict was introduced by PEP 589 (\"TypedDict: Type Hints for Dictionaries with a Fixed Set of Keys\", Python 3.8) to address: dict value types depend on the key (JSON-like objects). Alternatives considered and turned down along the way: \"There is no way to individually specify whether each key is required or not.\" (PEP 589: No proposed syntax was clear enough, and we expect that there is limited need for this.); \"TypedDict can't be used for specifying the type of a kwargs argument.\" (PEP 589: TypedDict can't be used for specifying the type of a kwargs argument.); \"TypedDict doesn't support providing a default value type for keys that are not explicitly…\" (PEP 589: TypedDict doesn't support providing a default value type for keys that are not explicitly defined.)",
+      "confidence": "high",
+      "peps": [
+        589
+      ],
+      "evidence": [
+        {
+          "pep": 692,
+          "section": "Rationale",
+          "rule": "R-INT cross-reference",
+          "snippet": "[pep:589] :pep:`589` introduced the ``TypedDict`` type constructor that supports dictionary types consisting of string keys and values of potentially different types."
+        },
+        {
+          "pep": 589,
+          "section": "Header",
+          "rule": "R-INT title",
+          "snippet": "Title: TypedDict: Type Hints for Dictionaries with a Fixed Set of Keys"
+        },
+        {
+          "pep": 589,
+          "section": "Motivation",
+          "rule": "R-PRB cue /json objects?/",
+          "snippet": "…defined class) is a common pattern in Python programs. Representing JSON objects is perhaps the canonical use case, and this is popular enough that P…"
+        },
+        {
+          "pep": 589,
+          "section": "Rejected Alternatives > bullet",
+          "rule": "R-REJ rejected-section",
+          "snippet": "No proposed syntax was clear enough, and we expect that there is limited need for this."
+        },
+        {
+          "pep": 589,
+          "section": "Rejected Alternatives > bullet",
+          "rule": "R-REJ rejected-section",
+          "snippet": "TypedDict can't be used for specifying the type of a kwargs argument."
+        },
+        {
+          "pep": 589,
+          "section": "Rejected Alternatives > bullet",
+          "rule": "R-REJ rejected-section",
+          "snippet": "TypedDict doesn't support providing a default value type for keys that are not explicitly defined."
+        }
+      ]
+    },
+    {
+      "rule": "I6_LATER_RESOLVED",
+      "statement": "PEP 589 left this out (\"There is no way to individually specify whether each key is required or not.\": No proposed syntax was clear enough, and we expect that there is limited need for this.); PEP 655 (\"Marking individual TypedDict items as required or potentially-missing\") later delivered it (a TypedDict cannot mark individual keys as required or optional) in Python 3.11.",
+      "confidence": "low",
+      "peps": [
+        589,
+        655
+      ],
+      "evidence": [
+        {
+          "pep": 589,
+          "section": "Rejected Alternatives > bullet",
+          "rule": "R-CON problem-cue /each key is required/",
+          "snippet": "There is no way to individually specify whether each key is required or not. No proposed syntax was clear enough, and we expect that there is limited…"
+        },
+        {
+          "pep": 655,
+          "section": "Abstract",
+          "rule": "R-PRB cue /required and others.{0,60}(potentially[- ]missing|optional)/",
+          "snippet": "…does not provide a mechanism to declare some keys as required and others as potentially-missing. This PEP introduces two new notations: ``Required[]`…"
+        },
+        {
+          "pep": 655,
+          "section": "Motivation",
+          "rule": "R-PRB cue /required and others.{0,60}(potentially[- ]missing|optional)/",
+          "snippet": "…want to define a TypedDict with some keys that are required and others that are potentially-missing. Currently the only way to define such a TypedDict…"
+        }
+      ]
+    },
+    {
+      "rule": "I1_PRIOR_REJECTION",
+      "statement": "A closely related idea, \"Special syntax around the key of a TypedDict item\", was rejected in PEP 655: : This notation would require Python grammar changes and it is not believed that marking TypedDict items as required or potentially-missing would meet the high bar required to make such grammar changes.",
+      "confidence": "high",
+      "peps": [
+        655
+      ],
+      "evidence": [
+        {
+          "pep": 655,
+          "section": "Rejected Ideas > Special syntax around the *key* of a TypedDict item",
+          "rule": "R-CON construct-in-idea",
+          "snippet": "Special syntax around the key of a TypedDict item"
+        }
+      ]
+    },
+    {
+      "rule": "I1_PRIOR_REJECTION",
+      "statement": "A closely related idea, \"Preventing unspecified keys in TypedDicts\", was rejected in PEP 705: Technically, however, this code is unsound: B does not declare foo, but instances of B may still have the key present, and the associated value may be of any type: mypy rejects the definition of get_field on the marked l",
+      "confidence": "low",
+      "peps": [
+        705
+      ],
+      "evidence": [
+        {
+          "pep": 705,
+          "section": "Rejected alternatives > Preventing unspecified keys in TypedDicts"
+        }
+      ]
+    },
+    {
+      "rule": "I7_EXTENDED_BY",
+      "statement": "TypedDict was later extended by PEP 655 (\"Marking individual TypedDict items as required or potentially-missing\", Python 3.11) adding NotRequired, Required [addresses the problem in the input]; PEP 692 (\"Using TypedDict for more precise **kwargs typing\", Python 3.12) adding typing **kwargs with a TypedDict; PEP 705 (\"TypedDict: Read-only items\", Python 3.13) adding ReadOnly.",
+      "confidence": "medium",
+      "peps": [
+        655,
+        692,
+        705
+      ],
+      "evidence": [
+        {
+          "pep": 655,
+          "section": "Header",
+          "rule": "R-EXT title/abstract-mention",
+          "snippet": "Title: Marking individual TypedDict items as required or potentially-missing"
+        },
+        {
+          "pep": 692,
+          "section": "Abstract",
+          "rule": "R-EXT title/abstract-mention",
+          "snippet": "mentions ``TypedDict``"
+        },
+        {
+          "pep": 705,
+          "section": "Abstract",
+          "rule": "R-EXT title/abstract-mention",
+          "snippet": "mentions ``typing.TypedDict``"
+        }
+      ]
+    },
+    {
+      "rule": "I3_DEPENDS_ON",
+      "statement": "Builds on TypedDict (PEP 589, Python 3.8). Minimum Python version implied: 3.8.",
+      "confidence": "high",
+      "peps": [
+        589
+      ],
+      "evidence": [
+        {
+          "pep": 589,
+          "section": "Header",
+          "rule": "R-VER Python-Version",
+          "snippet": "Python-Version: 3.8"
+        }
+      ]
+    }
+  ],
+  "citations": [
+    {
+      "pep": 484,
+      "title": "Type Hints",
+      "status": "Final",
+      "url": "https://peps.python.org/pep-0484/",
+      "used_for": [
+        "ranked"
+      ],
+      "sections": []
+    },
+    {
+      "pep": 589,
+      "title": "TypedDict: Type Hints for Dictionaries with a Fixed Set of Keys",
+      "status": "Final",
+      "url": "https://peps.python.org/pep-0589/",
+      "used_for": [
+        "I3_DEPENDS_ON",
+        "I5_DESIGN_RATIONALE",
+        "I6_LATER_RESOLVED",
+        "ranked"
+      ],
+      "sections": [
+        "Header",
+        "Motivation",
+        "Rejected Alternatives > bullet"
+      ]
+    },
+    {
+      "pep": 591,
+      "title": "Adding a final qualifier to typing",
+      "status": "Final",
+      "url": "https://peps.python.org/pep-0591/",
+      "used_for": [
+        "ranked"
+      ],
+      "sections": []
+    },
+    {
+      "pep": 655,
+      "title": "Marking individual TypedDict items as required or potentially-missing",
+      "status": "Final",
+      "url": "https://peps.python.org/pep-0655/",
+      "used_for": [
+        "I1_PRIOR_REJECTION",
+        "I6_LATER_RESOLVED",
+        "I7_EXTENDED_BY",
+        "ranked"
+      ],
+      "sections": [
+        "Abstract",
+        "Header",
+        "Motivation",
+        "Rejected Ideas > Special syntax around the *key* of a TypedDict item"
+      ]
+    },
+    {
+      "pep": 692,
+      "title": "Using TypedDict for more precise **kwargs typing",
+      "status": "Final",
+      "url": "https://peps.python.org/pep-0692/",
+      "used_for": [
+        "I7_EXTENDED_BY",
+        "ranked"
+      ],
+      "sections": [
+        "Abstract",
+        "Rationale"
+      ]
+    },
+    {
+      "pep": 705,
+      "title": "TypedDict: Read-only items",
+      "status": "Final",
+      "url": "https://peps.python.org/pep-0705/",
+      "used_for": [
+        "I1_PRIOR_REJECTION",
+        "I7_EXTENDED_BY",
+        "ranked"
+      ],
+      "sections": [
+        "Abstract",
+        "Rejected alternatives > Preventing unspecified keys in TypedDicts"
+      ]
+    }
+  ],
+  "trace": [
+    {
+      "step": "classify",
+      "result": "question",
+      "rule": "starts with a question word or ends with '?'"
+    },
+    {
+      "step": "match",
+      "entity": "construct:typeddict",
+      "strength": 1.0,
+      "via": "canonical name 'TypedDict'"
+    },
+    {
+      "step": "match",
+      "entity": "problem:typeddict-partial-keys",
+      "strength": 0.7,
+      "via": "alias 'required or optional'"
+    },
+    {
+      "step": "match",
+      "entity": "idea:589/there-is-no-way-to-individually-specify",
+      "strength": 0.48,
+      "via": "title keywords overlap 0.60 (individual, key, requir)"
+    },
+    {
+      "step": "match",
+      "entity": "idea:655/marking-required-or-potentially-missing-keys-with",
+      "strength": 0.4,
+      "via": "title keywords overlap 0.50 (key, mark, requir)"
+    },
+    {
+      "step": "match",
+      "entity": "idea:705/preventing-unspecified-keys-in-typeddicts",
+      "strength": 0.4,
+      "via": "title keywords overlap 0.50 (key, typeddict)"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:typeddict",
+      "edge": "INTRODUCES",
+      "to": "pep:589",
+      "hop": 1,
+      "path_strength": 0.6,
+      "path": "construct:typeddict <-INTRODUCES- pep:589"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:typeddict",
+      "edge": "EXTENDS",
+      "to": "pep:655",
+      "hop": 1,
+      "path_strength": 0.42,
+      "path": "construct:typeddict <-EXTENDS- pep:655"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:typeddict",
+      "edge": "EXTENDS",
+      "to": "pep:692",
+      "hop": 1,
+      "path_strength": 0.42,
+      "path": "construct:typeddict <-EXTENDS- pep:692"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:typeddict",
+      "edge": "EXTENDS",
+      "to": "pep:705",
+      "hop": 1,
+      "path_strength": 0.42,
+      "path": "construct:typeddict <-EXTENDS- pep:705"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:typeddict",
+      "edge": "CONCERNS",
+      "to": "idea:589/typeddict-can-t-be-used-for-specifying",
+      "hop": 1,
+      "path_strength": 0.54,
+      "path": "construct:typeddict <-CONCERNS- idea:589/typeddict-can-t-be-used-for-specifying"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:589/typeddict-can-t-be-used-for-specifying",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:589",
+      "hop": 2,
+      "path_strength": 0.292,
+      "path": "construct:typeddict <-CONCERNS- idea:589/typeddict-can-t-be-used-for-specifying <-REJECTED_ALTERNATIVE- pep:589"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:typeddict",
+      "edge": "CONCERNS",
+      "to": "idea:589/typeddict-doesn-t-support-providing-a-default",
+      "hop": 1,
+      "path_strength": 0.54,
+      "path": "construct:typeddict <-CONCERNS- idea:589/typeddict-doesn-t-support-providing-a-default"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:589/typeddict-doesn-t-support-providing-a-default",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:589",
+      "hop": 2,
+      "path_strength": 0.292,
+      "path": "construct:typeddict <-CONCERNS- idea:589/typeddict-doesn-t-support-providing-a-default <-REJECTED_ALTERNATIVE- pep:589"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:typeddict",
+      "edge": "CONCERNS",
+      "to": "idea:589/typeddict-isn-t-extensible-and-it-addresses",
+      "hop": 1,
+      "path_strength": 0.54,
+      "path": "construct:typeddict <-CONCERNS- idea:589/typeddict-isn-t-extensible-and-it-addresses"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:589/typeddict-isn-t-extensible-and-it-addresses",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:589",
+      "hop": 2,
+      "path_strength": 0.292,
+      "path": "construct:typeddict <-CONCERNS- idea:589/typeddict-isn-t-extensible-and-it-addresses <-REJECTED_ALTERNATIVE- pep:589"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:typeddict",
+      "edge": "CONCERNS",
+      "to": "idea:589/typeddict-type-definitions-could-plausibly-used-to",
+      "hop": 1,
+      "path_strength": 0.54,
+      "path": "construct:typeddict <-CONCERNS- idea:589/typeddict-type-definitions-could-plausibly-used-to"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:589/typeddict-type-definitions-could-plausibly-used-to",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:589",
+      "hop": 2,
+      "path_strength": 0.292,
+      "path": "construct:typeddict <-CONCERNS- idea:589/typeddict-type-definitions-could-plausibly-used-to <-REJECTED_ALTERNATIVE- pep:589"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:typeddict",
+      "edge": "CONCERNS",
+      "to": "idea:589/typeddict-types-can-t-be-used-in",
+      "hop": 1,
+      "path_strength": 0.54,
+      "path": "construct:typeddict <-CONCERNS- idea:589/typeddict-types-can-t-be-used-in"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:589/typeddict-types-can-t-be-used-in",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:589",
+      "hop": 2,
+      "path_strength": 0.292,
+      "path": "construct:typeddict <-CONCERNS- idea:589/typeddict-types-can-t-be-used-in <-REJECTED_ALTERNATIVE- pep:589"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:typeddict",
+      "edge": "CONCERNS",
+      "to": "idea:655/special-syntax-around-the-key-of-a",
+      "hop": 1,
+      "path_strength": 0.54,
+      "path": "construct:typeddict <-CONCERNS- idea:655/special-syntax-around-the-key-of-a"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:655/special-syntax-around-the-key-of-a",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:655",
+      "hop": 2,
+      "path_strength": 0.292,
+      "path": "construct:typeddict <-CONCERNS- idea:655/special-syntax-around-the-key-of-a <-REJECTED_ALTERNATIVE- pep:655"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:typeddict",
+      "edge": "CONCERNS",
+      "to": "idea:692/typeddict-unions",
+      "hop": 1,
+      "path_strength": 0.54,
+      "path": "construct:typeddict <-CONCERNS- idea:692/typeddict-unions"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:692/typeddict-unions",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:692",
+      "hop": 2,
+      "path_strength": 0.292,
+      "path": "construct:typeddict <-CONCERNS- idea:692/typeddict-unions <-REJECTED_ALTERNATIVE- pep:692"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:typeddict",
+      "edge": "CONCERNS",
+      "to": "idea:705/preventing-unspecified-keys-in-typeddicts",
+      "hop": 1,
+      "path_strength": 0.54,
+      "path": "construct:typeddict <-CONCERNS- idea:705/preventing-unspecified-keys-in-typeddicts"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:705/preventing-unspecified-keys-in-typeddicts",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:705",
+      "hop": 2,
+      "path_strength": 0.292,
+      "path": "construct:typeddict <-CONCERNS- idea:705/preventing-unspecified-keys-in-typeddicts <-REJECTED_ALTERNATIVE- pep:705"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:typeddict",
+      "edge": "CONCERNS",
+      "to": "idea:705/reusing-the-final-annotation",
+      "hop": 1,
+      "path_strength": 0.42,
+      "path": "construct:typeddict <-CONCERNS- idea:705/reusing-the-final-annotation"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:705/reusing-the-final-annotation",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:705",
+      "hop": 2,
+      "path_strength": 0.227,
+      "path": "construct:typeddict <-CONCERNS- idea:705/reusing-the-final-annotation <-REJECTED_ALTERNATIVE- pep:705"
+    },
+    {
+      "step": "traverse",
+      "from": "problem:typeddict-partial-keys",
+      "edge": "ADDRESSES_PROBLEM",
+      "to": "pep:655",
+      "hop": 1,
+      "path_strength": 0.42,
+      "path": "problem:typeddict-partial-keys <-ADDRESSES_PROBLEM- pep:655"
+    },
+    {
+      "step": "traverse",
+      "from": "problem:typeddict-partial-keys",
+      "edge": "CONCERNS",
+      "to": "idea:589/there-is-no-way-to-individually-specify",
+      "hop": 1,
+      "path_strength": 0.336,
+      "path": "problem:typeddict-partial-keys <-CONCERNS- idea:589/there-is-no-way-to-individually-specify"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:589/there-is-no-way-to-individually-specify",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:589",
+      "hop": 2,
+      "path_strength": 0.181,
+      "path": "problem:typeddict-partial-keys <-CONCERNS- idea:589/there-is-no-way-to-individually-specify <-REJECTED_ALTERNATIVE- pep:589"
+    },
+    {
+      "step": "traverse",
+      "from": "problem:typeddict-partial-keys",
+      "edge": "CONCERNS",
+      "to": "idea:655/marking-required-or-potentially-missing-keys-with",
+      "hop": 1,
+      "path_strength": 0.336,
+      "path": "problem:typeddict-partial-keys <-CONCERNS- idea:655/marking-required-or-potentially-missing-keys-with"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:655/marking-required-or-potentially-missing-keys-with",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:655",
+      "hop": 2,
+      "path_strength": 0.181,
+      "path": "problem:typeddict-partial-keys <-CONCERNS- idea:655/marking-required-or-potentially-missing-keys-with <-REJECTED_ALTERNATIVE- pep:655"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:589/there-is-no-way-to-individually-specify",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:589",
+      "hop": 1,
+      "path_strength": 0.259,
+      "path": "idea:589/there-is-no-way-to-individually-specify <-REJECTED_ALTERNATIVE- pep:589"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:655/marking-required-or-potentially-missing-keys-with",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:655",
+      "hop": 1,
+      "path_strength": 0.216,
+      "path": "idea:655/marking-required-or-potentially-missing-keys-with <-REJECTED_ALTERNATIVE- pep:655"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:705/preventing-unspecified-keys-in-typeddicts",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:705",
+      "hop": 1,
+      "path_strength": 0.216,
+      "path": "idea:705/preventing-unspecified-keys-in-typeddicts <-REJECTED_ALTERNATIVE- pep:705"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:589/typeddict-can-t-be-used-for-specifying",
+      "edge": "CONCERNS",
+      "to": "pep:484",
+      "hop": 2,
+      "path_strength": 0.259,
+      "path": "construct:typeddict <-CONCERNS- idea:589/typeddict-can-t-be-used-for-specifying -CONCERNS-> pep:484"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:705/preventing-unspecified-keys-in-typeddicts",
+      "edge": "CONCERNS",
+      "to": "pep:591",
+      "hop": 1,
+      "path_strength": 0.192,
+      "path": "idea:705/preventing-unspecified-keys-in-typeddicts -CONCERNS-> pep:591"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:705/preventing-unspecified-keys-in-typeddicts",
+      "edge": "CONCERNS",
+      "to": "pep:728",
+      "hop": 1,
+      "path_strength": 0.192,
+      "path": "idea:705/preventing-unspecified-keys-in-typeddicts -CONCERNS-> pep:728"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:705/reusing-the-final-annotation",
+      "edge": "CONCERNS",
+      "to": "pep:591",
+      "hop": 2,
+      "path_strength": 0.202,
+      "path": "construct:typeddict <-CONCERNS- idea:705/reusing-the-final-annotation -CONCERNS-> pep:591"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:589",
+      "edge": "BUILDS_ON",
+      "to": "pep:483",
+      "hop": 2,
+      "path_strength": 0.18,
+      "path": "construct:typeddict <-INTRODUCES- pep:589 -BUILDS_ON-> pep:483"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:589",
+      "edge": "BUILDS_ON",
+      "to": "pep:484",
+      "hop": 2,
+      "path_strength": 0.36,
+      "path": "construct:typeddict <-INTRODUCES- pep:589 -BUILDS_ON-> pep:484"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:589",
+      "edge": "BUILDS_ON",
+      "to": "pep:526",
+      "hop": 2,
+      "path_strength": 0.288,
+      "path": "construct:typeddict <-INTRODUCES- pep:589 -BUILDS_ON-> pep:526"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:589",
+      "edge": "BUILDS_ON",
+      "to": "pep:586",
+      "hop": 2,
+      "path_strength": 0.18,
+      "path": "construct:typeddict <-INTRODUCES- pep:589 -BUILDS_ON-> pep:586"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:589",
+      "edge": "BUILDS_ON",
+      "to": "pep:591",
+      "hop": 2,
+      "path_strength": 0.18,
+      "path": "construct:typeddict <-INTRODUCES- pep:589 -BUILDS_ON-> pep:591"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:655",
+      "edge": "BUILDS_ON",
+      "to": "pep:589",
+      "hop": 2,
+      "path_strength": 0.252,
+      "path": "construct:typeddict <-EXTENDS- pep:655 -BUILDS_ON-> pep:589"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:692",
+      "edge": "BUILDS_ON",
+      "to": "pep:589",
+      "hop": 2,
+      "path_strength": 0.202,
+      "path": "construct:typeddict <-EXTENDS- pep:692 -BUILDS_ON-> pep:589"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:692",
+      "edge": "BUILDS_ON",
+      "to": "pep:646",
+      "hop": 2,
+      "path_strength": 0.202,
+      "path": "construct:typeddict <-EXTENDS- pep:692 -BUILDS_ON-> pep:646"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:692",
+      "edge": "BUILDS_ON",
+      "to": "pep:655",
+      "hop": 2,
+      "path_strength": 0.126,
+      "path": "construct:typeddict <-EXTENDS- pep:692 -BUILDS_ON-> pep:655"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:705",
+      "edge": "BUILDS_ON",
+      "to": "pep:544",
+      "hop": 2,
+      "path_strength": 0.252,
+      "path": "construct:typeddict <-EXTENDS- pep:705 -BUILDS_ON-> pep:544"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:705",
+      "edge": "BUILDS_ON",
+      "to": "pep:589",
+      "hop": 2,
+      "path_strength": 0.252,
+      "path": "construct:typeddict <-EXTENDS- pep:705 -BUILDS_ON-> pep:589"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:705",
+      "edge": "BUILDS_ON",
+      "to": "pep:655",
+      "hop": 2,
+      "path_strength": 0.202,
+      "path": "construct:typeddict <-EXTENDS- pep:705 -BUILDS_ON-> pep:655"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:705",
+      "edge": "BUILDS_ON",
+      "to": "pep:692",
+      "hop": 2,
+      "path_strength": 0.126,
+      "path": "construct:typeddict <-EXTENDS- pep:705 -BUILDS_ON-> pep:692"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:655",
+      "edge": "BUILDS_ON",
+      "to": "pep:589",
+      "hop": 2,
+      "path_strength": 0.252,
+      "path": "problem:typeddict-partial-keys <-ADDRESSES_PROBLEM- pep:655 -BUILDS_ON-> pep:589"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:589",
+      "edge": "BUILDS_ON",
+      "to": "pep:483",
+      "hop": 2,
+      "path_strength": 0.078,
+      "path": "idea:589/there-is-no-way-to-individually-specify <-REJECTED_ALTERNATIVE- pep:589 -BUILDS_ON-> pep:483"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:589",
+      "edge": "BUILDS_ON",
+      "to": "pep:484",
+      "hop": 2,
+      "path_strength": 0.156,
+      "path": "idea:589/there-is-no-way-to-individually-specify <-REJECTED_ALTERNATIVE- pep:589 -BUILDS_ON-> pep:484"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:589",
+      "edge": "BUILDS_ON",
+      "to": "pep:526",
+      "hop": 2,
+      "path_strength": 0.124,
+      "path": "idea:589/there-is-no-way-to-individually-specify <-REJECTED_ALTERNATIVE- pep:589 -BUILDS_ON-> pep:526"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:589",
+      "edge": "BUILDS_ON",
+      "to": "pep:586",
+      "hop": 2,
+      "path_strength": 0.078,
+      "path": "idea:589/there-is-no-way-to-individually-specify <-REJECTED_ALTERNATIVE- pep:589 -BUILDS_ON-> pep:586"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:589",
+      "edge": "BUILDS_ON",
+      "to": "pep:591",
+      "hop": 2,
+      "path_strength": 0.078,
+      "path": "idea:589/there-is-no-way-to-individually-specify <-REJECTED_ALTERNATIVE- pep:589 -BUILDS_ON-> pep:591"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:655",
+      "edge": "BUILDS_ON",
+      "to": "pep:589",
+      "hop": 2,
+      "path_strength": 0.13,
+      "path": "idea:655/marking-required-or-potentially-missing-keys-with <-REJECTED_ALTERNATIVE- pep:655 -BUILDS_ON-> pep:589"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:705",
+      "edge": "BUILDS_ON",
+      "to": "pep:544",
+      "hop": 2,
+      "path_strength": 0.13,
+      "path": "idea:705/preventing-unspecified-keys-in-typeddicts <-REJECTED_ALTERNATIVE- pep:705 -BUILDS_ON-> pep:544"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:705",
+      "edge": "BUILDS_ON",
+      "to": "pep:589",
+      "hop": 2,
+      "path_strength": 0.13,
+      "path": "idea:705/preventing-unspecified-keys-in-typeddicts <-REJECTED_ALTERNATIVE- pep:705 -BUILDS_ON-> pep:589"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:705",
+      "edge": "BUILDS_ON",
+      "to": "pep:655",
+      "hop": 2,
+      "path_strength": 0.104,
+      "path": "idea:705/preventing-unspecified-keys-in-typeddicts <-REJECTED_ALTERNATIVE- pep:705 -BUILDS_ON-> pep:655"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:705",
+      "edge": "BUILDS_ON",
+      "to": "pep:692",
+      "hop": 2,
+      "path_strength": 0.065,
+      "path": "idea:705/preventing-unspecified-keys-in-typeddicts <-REJECTED_ALTERNATIVE- pep:705 -BUILDS_ON-> pep:692"
+    },
+    {
+      "step": "score",
+      "pep": 589,
+      "formula": "path_sum 3.715 x status[Final]=1.0 x centrality 1.09",
+      "score": 4.043
+    },
+    {
+      "step": "score",
+      "pep": 655,
+      "formula": "path_sum 1.960 x status[Final]=1.0 x centrality 1.06",
+      "score": 2.076
+    },
+    {
+      "step": "score",
+      "pep": 692,
+      "formula": "path_sum 0.902 x status[Final]=1.0 x centrality 1.03",
+      "score": 0.929
+    },
+    {
+      "step": "score",
+      "pep": 705,
+      "formula": "path_sum 1.154 x status[Final]=1.0 x centrality 1.00",
+      "score": 1.154
+    },
+    {
+      "step": "score",
+      "pep": 484,
+      "formula": "path_sum 0.775 x status[Final]=1.0 x centrality 1.50",
+      "score": 1.162
+    },
+    {
+      "step": "score",
+      "pep": 591,
+      "formula": "path_sum 0.651 x status[Final]=1.0 x centrality 1.09",
+      "score": 0.709
+    },
+    {
+      "step": "score",
+      "pep": 728,
+      "formula": "path_sum 0.192 x status[None]=0.3 x centrality 1.00",
+      "score": 0.058
+    },
+    {
+      "step": "score",
+      "pep": 483,
+      "formula": "path_sum 0.258 x status[Final]=1.0 x centrality 1.12",
+      "score": 0.288
+    },
+    {
+      "step": "score",
+      "pep": 526,
+      "formula": "path_sum 0.412 x status[Final]=1.0 x centrality 1.24",
+      "score": 0.509
+    },
+    {
+      "step": "score",
+      "pep": 586,
+      "formula": "path_sum 0.258 x status[Final]=1.0 x centrality 1.09",
+      "score": 0.281
+    },
+    {
+      "step": "score",
+      "pep": 646,
+      "formula": "path_sum 0.202 x status[Final]=1.0 x centrality 1.12",
+      "score": 0.225
+    },
+    {
+      "step": "score",
+      "pep": 544,
+      "formula": "path_sum 0.382 x status[Final]=1.0 x centrality 1.15",
+      "score": 0.438
+    },
+    {
+      "step": "infer",
+      "rule": "relevance-filter",
+      "kept": [
+        "idea:589/there-is-no-way-to-individually-specify",
+        "idea:589/typeddict-doesn-t-support-providing-a-default",
+        "idea:655/marking-required-or-potentially-missing-keys-with",
+        "idea:655/special-syntax-around-the-key-of-a",
+        "idea:705/preventing-unspecified-keys-in-typeddicts"
+      ],
+      "dropped": [
+        "idea:589/typeddict-can-t-be-used-for-specifying",
+        "idea:589/typeddict-isn-t-extensible-and-it-addresses",
+        "idea:589/typeddict-type-definitions-could-plausibly-used-to",
+        "idea:589/typeddict-types-can-t-be-used-in",
+        "idea:692/typeddict-unions",
+        "idea:705/reusing-the-final-annotation"
+      ]
+    },
+    {
+      "step": "infer",
+      "rule": "I1_PRIOR_REJECTION",
+      "fired": true,
+      "inputs": [
+        "idea:589/typeddict-doesn-t-support-providing-a-default",
+        "idea:655/special-syntax-around-the-key-of-a",
+        "idea:705/preventing-unspecified-keys-in-typeddicts",
+        "idea:589/there-is-no-way-to-individually-specify",
+        "idea:655/marking-required-or-potentially-missing-keys-with",
+        "pep:589",
+        "pep:655",
+        "pep:484",
+        "pep:705",
+        "pep:692",
+        "pep:591"
+      ]
+    },
+    {
+      "step": "infer",
+      "rule": "I2_ALREADY_PROVIDED",
+      "fired": false,
+      "inputs": [
+        "construct:typeddict"
+      ]
+    },
+    {
+      "step": "infer",
+      "rule": "I3_DEPENDS_ON",
+      "fired": true,
+      "inputs": [
+        "TypedDict"
+      ]
+    },
+    {
+      "step": "infer",
+      "rule": "I4_SUPERSEDED_SOURCE",
+      "fired": false,
+      "inputs": [
+        "pep:589",
+        "pep:655",
+        "pep:484",
+        "pep:705",
+        "pep:692",
+        "pep:591",
+        "pep:526",
+        "pep:544",
+        "pep:483",
+        "pep:586",
+        "pep:646"
+      ]
+    },
+    {
+      "step": "infer",
+      "rule": "I5_DESIGN_RATIONALE",
+      "fired": true,
+      "inputs": [
+        "construct:typeddict",
+        "pep:589"
+      ]
+    },
+    {
+      "step": "infer",
+      "rule": "I6_LATER_RESOLVED",
+      "fired": true,
+      "inputs": [
+        "idea:589/typeddict-doesn-t-support-providing-a-default",
+        "idea:655/special-syntax-around-the-key-of-a",
+        "idea:705/preventing-unspecified-keys-in-typeddicts",
+        "idea:589/there-is-no-way-to-individually-specify",
+        "idea:655/marking-required-or-potentially-missing-keys-with"
+      ]
+    },
+    {
+      "step": "infer",
+      "rule": "I7_EXTENDED_BY",
+      "fired": true,
+      "inputs": [
+        "construct:typeddict"
+      ]
+    },
+    {
+      "step": "output",
+      "verdict": "explained",
+      "rule": "see Reasoner.output()"
+    }
+  ]
+}

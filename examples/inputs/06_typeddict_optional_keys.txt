@@ -1,0 +1,1 @@
+Was it ever rejected to let a TypedDict mark individual keys as required or optional, and if so, can I do it now and since which Python version?

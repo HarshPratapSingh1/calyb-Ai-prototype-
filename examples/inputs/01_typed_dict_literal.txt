@@ -1,0 +1,1 @@
+Add a built-in syntax for typed dict literals, so I can write {"name": str, "age": int} directly as a type instead of declaring a TypedDict class.

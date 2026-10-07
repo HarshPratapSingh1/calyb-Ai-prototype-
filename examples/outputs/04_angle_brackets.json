@@ -1,0 +1,1124 @@
+{
+  "input": "Why does Python use square brackets for generics instead of angle brackets like Java or C++?",
+  "input_type": "question",
+  "verdict": "explained",
+  "summary": "square-bracket generics was introduced by PEP 484 (\"Type Hints\", Python 3.5). Alternatives considered and turned down along the way: \"Which brackets for generic type parameters?\" (PEP 484: The problem with these is that they are really hard to parse, especially for a simple-minded parser like Python.); \"Angle Brackets\" (PEP 695: We explored the use of angle brackets for type parameter declarations in Python, but we ultimately rejected it for two reasons. First,…); \"Readability. class Array(Generic[DType, Unpack[Shape]]) is a bit of a mouthful; the flow…\" (PEP 646: Readability.) A closely related idea, \"Angle Brackets\", was rejected in PEP 695: We explored the use of angle brackets for type parameter declarations in Python, but we ultimately rejected it for two reasons. First, angle brackets are not considered \"paired\" by the Python scanner, so end-of-line char A closely related idea, \"Which brackets for generic type parameters?\", was rejected in PEP 484: The problem with these is that they are really hard to parse, especially for a simple-minded parser like Python. Builds on Generic (PEP 484, Python 3.5). Minimum Python version implied: 3.5.",
+  "minimum_python_version": "3.5",
+  "matched_entities": [
+    {
+      "id": "construct:generic",
+      "type": "Construct",
+      "label": "Generic",
+      "strength": 0.9,
+      "matched_on": "alias 'generics'"
+    },
+    {
+      "id": "syntax:angle-brackets",
+      "type": "Syntax",
+      "label": "angle-bracket generics (never adopted)",
+      "strength": 0.8,
+      "matched_on": "alias 'angle brackets'"
+    },
+    {
+      "id": "syntax:square-brackets",
+      "type": "Syntax",
+      "label": "square-bracket generics",
+      "strength": 0.8,
+      "matched_on": "alias 'square brackets'"
+    },
+    {
+      "id": "idea:695/angle-brackets",
+      "type": "RejectedIdea",
+      "label": "Angle Brackets (PEP 695, rejected)",
+      "strength": 0.8,
+      "matched_on": "title keywords overlap 1.00 (angle, bracket)"
+    },
+    {
+      "id": "idea:484/which-brackets-for-generic-type-parameters",
+      "type": "RejectedIdea",
+      "label": "Which brackets for generic type parameters? (PEP 484, rejected)",
+      "strength": 0.533,
+      "matched_on": "title keywords overlap 0.67 (bracket, generic)"
+    }
+  ],
+  "ranked_peps": [
+    {
+      "pep": 484,
+      "title": "Type Hints",
+      "status": "Final",
+      "python_version": "3.5",
+      "in_slice": true,
+      "score": 2.447,
+      "score_breakdown": {
+        "paths": [
+          {
+            "route": "construct:generic <-INTRODUCES- pep:484",
+            "strength": 0.378
+          },
+          {
+            "route": "idea:484/which-brackets-for-generic-type-parameters <-REJECTED_ALTERNATIVE- pep:484",
+            "strength": 0.288
+          },
+          {
+            "route": "idea:695/angle-brackets <-REJECTED_ALTERNATIVE- pep:695 -BUILDS_ON-> pep:484",
+            "strength": 0.259
+          },
+          {
+            "route": "syntax:square-brackets <-INTRODUCES- pep:484",
+            "strength": 0.24
+          },
+          {
+            "route": "syntax:angle-brackets <-CONCERNS- idea:484/which-brackets-for-generic-type-parameters <-REJECTED_ALTERNATIVE- pep:484",
+            "strength": 0.233
+          }
+        ],
+        "path_sum": 1.632,
+        "status_weight": 1.0,
+        "centrality": 1.5
+      }
+    },
+    {
+      "pep": 695,
+      "title": "Type Parameter Syntax",
+      "status": "Final",
+      "python_version": "3.12",
+      "in_slice": true,
+      "score": 0.925,
+      "score_breakdown": {
+        "paths": [
+          {
+            "route": "idea:695/angle-brackets <-REJECTED_ALTERNATIVE- pep:695",
+            "strength": 0.432
+          },
+          {
+            "route": "syntax:angle-brackets <-CONCERNS- idea:695/angle-brackets <-REJECTED_ALTERNATIVE- pep:695",
+            "strength": 0.233
+          },
+          {
+            "route": "syntax:square-brackets <-CONCERNS- idea:695/angle-brackets <-REJECTED_ALTERNATIVE- pep:695",
+            "strength": 0.233
+          }
+        ],
+        "path_sum": 0.899,
+        "status_weight": 1.0,
+        "centrality": 1.029
+      }
+    },
+    {
+      "pep": 483,
+      "title": "The Theory of Type Hints",
+      "status": "Final",
+      "python_version": null,
+      "in_slice": true,
+      "score": 0.897,
+      "score_breakdown": {
+        "paths": [
+          {
+            "route": "idea:695/angle-brackets <-REJECTED_ALTERNATIVE- pep:695 -BUILDS_ON-> pep:483",
+            "strength": 0.259
+          },
+          {
+            "route": "construct:generic <-INTRODUCES- pep:484 -BUILDS_ON-> pep:483",
+            "strength": 0.227
+          },
+          {
+            "route": "idea:484/which-brackets-for-generic-type-parameters <-REJECTED_ALTERNATIVE- pep:484 -BUILDS_ON-> pep:483",
+            "strength": 0.173
+          },
+          {
+            "route": "syntax:square-brackets <-INTRODUCES- pep:484 -BUILDS_ON-> pep:483",
+            "strength": 0.144
+          }
+        ],
+        "path_sum": 0.803,
+        "status_weight": 1.0,
+        "centrality": 1.118
+      }
+    },
+    {
+      "pep": 646,
+      "title": "Variadic Generics",
+      "status": "Final",
+      "python_version": "3.11",
+      "in_slice": true,
+      "score": 0.844,
+      "score_breakdown": {
+        "paths": [
+          {
+            "route": "construct:generic <-CONCERNS- idea:646/readability-class-array-generic-dtype-unpack-shape <-REJECTED_ALTERNATIVE- pep:646",
+            "strength": 0.262
+          },
+          {
+            "route": "idea:695/angle-brackets <-REJECTED_ALTERNATIVE- pep:695 -BUILDS_ON-> pep:646",
+            "strength": 0.259
+          },
+          {
+            "route": "syntax:square-brackets <-CONCERNS- idea:646/readability-class-array-generic-dtype-unpack-shape <-REJECTED_ALTERNATIVE- pep:646",
+            "strength": 0.233
+          }
+        ],
+        "path_sum": 0.755,
+        "status_weight": 1.0,
+        "centrality": 1.118
+      }
+    },
+    {
+      "pep": 526,
+      "title": "Syntax for Variable Annotations",
+      "status": "Final",
+      "python_version": "3.6",
+      "in_slice": true,
+      "score": 0.336,
+      "score_breakdown": {
+        "paths": [
+          {
+            "route": "construct:generic <-INTRODUCES- pep:484 -BUILDS_ON-> pep:526",
+            "strength": 0.113
+          },
+          {
+            "route": "idea:484/which-brackets-for-generic-type-parameters <-REJECTED_ALTERNATIVE- pep:484 -BUILDS_ON-> pep:526",
+            "strength": 0.086
+          },
+          {
+            "route": "syntax:square-brackets <-INTRODUCES- pep:484 -BUILDS_ON-> pep:526",
+            "strength": 0.072
+          }
+        ],
+        "path_sum": 0.272,
+        "status_weight": 1.0,
+        "centrality": 1.235
+      }
+    },
+    {
+      "pep": 561,
+      "title": "Distributing and Packaging Type Information",
+      "status": "Final",
+      "python_version": "3.7",
+      "in_slice": true,
+      "score": 0.28,
+      "score_breakdown": {
+        "paths": [
+          {
+            "route": "construct:generic <-INTRODUCES- pep:484 -BUILDS_ON-> pep:561",
+            "strength": 0.113
+          },
+          {
+            "route": "idea:484/which-brackets-for-generic-type-parameters <-REJECTED_ALTERNATIVE- pep:484 -BUILDS_ON-> pep:561",
+            "strength": 0.086
+          },
+          {
+            "route": "syntax:square-brackets <-INTRODUCES- pep:484 -BUILDS_ON-> pep:561",
+            "strength": 0.072
+          }
+        ],
+        "path_sum": 0.272,
+        "status_weight": 1.0,
+        "centrality": 1.029
+      }
+    }
+  ],
+  "conclusions": [
+    {
+      "rule": "I5_DESIGN_RATIONALE",
+      "statement": "square-bracket generics was introduced by PEP 484 (\"Type Hints\", Python 3.5). Alternatives considered and turned down along the way: \"Which brackets for generic type parameters?\" (PEP 484: The problem with these is that they are really hard to parse, especially for a simple-minded parser like Python.); \"Angle Brackets\" (PEP 695: We explored the use of angle brackets for type parameter declarations in Python, but we ultimately rejected it for two reasons. First,…); \"Readability. class Array(Generic[DType, Unpack[Shape]]) is a bit of a mouthful; the flow…\" (PEP 646: Readability.)",
+      "confidence": "medium",
+      "peps": [
+        484,
+        646,
+        695
+      ],
+      "evidence": [
+        {
+          "pep": 484,
+          "section": "Abstract",
+          "rule": "R-INT earliest-mention",
+          "snippet": "uses ``square brackets``"
+        },
+        {
+          "pep": 484,
+          "section": "Rejected Alternatives > Which brackets for generic type parameters?",
+          "rule": "R-REJ rejected-section",
+          "snippet": "The problem with these is that they are really hard to parse, especially for a simple-minded parser like Python."
+        },
+        {
+          "pep": 695,
+          "section": "Rejected Ideas > Angle Brackets",
+          "rule": "R-REJ rejected-section",
+          "snippet": "We explored the use of angle brackets for type parameter declarations in Python, but we ultimately rejected it for two reasons. First, angle brackets are not considered \"paired\" by the Python scanner, so end-of-line char"
+        },
+        {
+          "pep": 646,
+          "section": "Grammar Changes > Alternatives (Why Not Just Use ``Unpack``?) > bullet",
+          "rule": "R-REJ rejected-section",
+          "snippet": "Readability."
+        }
+      ]
+    },
+    {
+      "rule": "I1_PRIOR_REJECTION",
+      "statement": "A closely related idea, \"Angle Brackets\", was rejected in PEP 695: We explored the use of angle brackets for type parameter declarations in Python, but we ultimately rejected it for two reasons. First, angle brackets are not considered \"paired\" by the Python scanner, so end-of-line char",
+      "confidence": "high",
+      "peps": [
+        695
+      ],
+      "evidence": [
+        {
+          "pep": 695,
+          "section": "Rejected Ideas > Angle Brackets"
+        }
+      ]
+    },
+    {
+      "rule": "I1_PRIOR_REJECTION",
+      "statement": "A closely related idea, \"Which brackets for generic type parameters?\", was rejected in PEP 484: The problem with these is that they are really hard to parse, especially for a simple-minded parser like Python.",
+      "confidence": "medium",
+      "peps": [
+        484
+      ],
+      "evidence": [
+        {
+          "pep": 484,
+          "section": "Rejected Alternatives > Which brackets for generic type parameters?"
+        }
+      ]
+    },
+    {
+      "rule": "I3_DEPENDS_ON",
+      "statement": "Builds on Generic (PEP 484, Python 3.5). Minimum Python version implied: 3.5.",
+      "confidence": "high",
+      "peps": [
+        484
+      ],
+      "evidence": [
+        {
+          "pep": 484,
+          "section": "Header",
+          "rule": "R-VER Python-Version",
+          "snippet": "Python-Version: 3.5"
+        }
+      ]
+    }
+  ],
+  "citations": [
+    {
+      "pep": 483,
+      "title": "The Theory of Type Hints",
+      "status": "Final",
+      "url": "https://peps.python.org/pep-0483/",
+      "used_for": [
+        "ranked"
+      ],
+      "sections": []
+    },
+    {
+      "pep": 484,
+      "title": "Type Hints",
+      "status": "Final",
+      "url": "https://peps.python.org/pep-0484/",
+      "used_for": [
+        "I1_PRIOR_REJECTION",
+        "I3_DEPENDS_ON",
+        "I5_DESIGN_RATIONALE",
+        "ranked"
+      ],
+      "sections": [
+        "Abstract",
+        "Header",
+        "Rejected Alternatives > Which brackets for generic type parameters?"
+      ]
+    },
+    {
+      "pep": 526,
+      "title": "Syntax for Variable Annotations",
+      "status": "Final",
+      "url": "https://peps.python.org/pep-0526/",
+      "used_for": [
+        "ranked"
+      ],
+      "sections": []
+    },
+    {
+      "pep": 561,
+      "title": "Distributing and Packaging Type Information",
+      "status": "Final",
+      "url": "https://peps.python.org/pep-0561/",
+      "used_for": [
+        "ranked"
+      ],
+      "sections": []
+    },
+    {
+      "pep": 646,
+      "title": "Variadic Generics",
+      "status": "Final",
+      "url": "https://peps.python.org/pep-0646/",
+      "used_for": [
+        "I5_DESIGN_RATIONALE",
+        "ranked"
+      ],
+      "sections": [
+        "Grammar Changes > Alternatives (Why Not Just Use ``Unpack``?) > bullet"
+      ]
+    },
+    {
+      "pep": 695,
+      "title": "Type Parameter Syntax",
+      "status": "Final",
+      "url": "https://peps.python.org/pep-0695/",
+      "used_for": [
+        "I1_PRIOR_REJECTION",
+        "I5_DESIGN_RATIONALE",
+        "ranked"
+      ],
+      "sections": [
+        "Rejected Ideas > Angle Brackets"
+      ]
+    }
+  ],
+  "trace": [
+    {
+      "step": "classify",
+      "result": "question",
+      "rule": "starts with a question word or ends with '?'"
+    },
+    {
+      "step": "match",
+      "entity": "construct:generic",
+      "strength": 0.9,
+      "via": "alias 'generics'"
+    },
+    {
+      "step": "match",
+      "entity": "syntax:angle-brackets",
+      "strength": 0.8,
+      "via": "alias 'angle brackets'"
+    },
+    {
+      "step": "match",
+      "entity": "syntax:square-brackets",
+      "strength": 0.8,
+      "via": "alias 'square brackets'"
+    },
+    {
+      "step": "match",
+      "entity": "idea:695/angle-brackets",
+      "strength": 0.8,
+      "via": "title keywords overlap 1.00 (angle, bracket)"
+    },
+    {
+      "step": "match",
+      "entity": "idea:484/which-brackets-for-generic-type-parameters",
+      "strength": 0.533,
+      "via": "title keywords overlap 0.67 (bracket, generic)"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:generic",
+      "edge": "INTRODUCES",
+      "to": "pep:484",
+      "hop": 1,
+      "path_strength": 0.378,
+      "path": "construct:generic <-INTRODUCES- pep:484"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:generic",
+      "edge": "CONCERNS",
+      "to": "idea:585/generics-erasure",
+      "hop": 1,
+      "path_strength": 0.486,
+      "path": "construct:generic <-CONCERNS- idea:585/generics-erasure"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:585/generics-erasure",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:585",
+      "hop": 2,
+      "path_strength": 0.262,
+      "path": "construct:generic <-CONCERNS- idea:585/generics-erasure <-REJECTED_ALTERNATIVE- pep:585"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:generic",
+      "edge": "CONCERNS",
+      "to": "idea:646/readability-class-array-generic-dtype-unpack-shape",
+      "hop": 1,
+      "path_strength": 0.486,
+      "path": "construct:generic <-CONCERNS- idea:646/readability-class-array-generic-dtype-unpack-shape"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:646/readability-class-array-generic-dtype-unpack-shape",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:646",
+      "hop": 2,
+      "path_strength": 0.262,
+      "path": "construct:generic <-CONCERNS- idea:646/readability-class-array-generic-dtype-unpack-shape <-REJECTED_ALTERNATIVE- pep:646"
+    },
+    {
+      "step": "traverse",
+      "from": "construct:generic",
+      "edge": "CONCERNS",
+      "to": "idea:696/allowing-the-type-parameters-defaults-to-be",
+      "hop": 1,
+      "path_strength": 0.378,
+      "path": "construct:generic <-CONCERNS- idea:696/allowing-the-type-parameters-defaults-to-be"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:696/allowing-the-type-parameters-defaults-to-be",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:696",
+      "hop": 2,
+      "path_strength": 0.204,
+      "path": "construct:generic <-CONCERNS- idea:696/allowing-the-type-parameters-defaults-to-be <-REJECTED_ALTERNATIVE- pep:696"
+    },
+    {
+      "step": "traverse",
+      "from": "syntax:angle-brackets",
+      "edge": "CONCERNS",
+      "to": "idea:484/which-brackets-for-generic-type-parameters",
+      "hop": 1,
+      "path_strength": 0.432,
+      "path": "syntax:angle-brackets <-CONCERNS- idea:484/which-brackets-for-generic-type-parameters"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:484/which-brackets-for-generic-type-parameters",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:484",
+      "hop": 2,
+      "path_strength": 0.233,
+      "path": "syntax:angle-brackets <-CONCERNS- idea:484/which-brackets-for-generic-type-parameters <-REJECTED_ALTERNATIVE- pep:484"
+    },
+    {
+      "step": "traverse",
+      "from": "syntax:angle-brackets",
+      "edge": "CONCERNS",
+      "to": "idea:695/angle-brackets",
+      "hop": 1,
+      "path_strength": 0.432,
+      "path": "syntax:angle-brackets <-CONCERNS- idea:695/angle-brackets"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:695/angle-brackets",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:695",
+      "hop": 2,
+      "path_strength": 0.233,
+      "path": "syntax:angle-brackets <-CONCERNS- idea:695/angle-brackets <-REJECTED_ALTERNATIVE- pep:695"
+    },
+    {
+      "step": "traverse",
+      "from": "syntax:square-brackets",
+      "edge": "INTRODUCES",
+      "to": "pep:484",
+      "hop": 1,
+      "path_strength": 0.24,
+      "path": "syntax:square-brackets <-INTRODUCES- pep:484"
+    },
+    {
+      "step": "traverse",
+      "from": "syntax:square-brackets",
+      "edge": "CONCERNS",
+      "to": "idea:484/which-brackets-for-generic-type-parameters",
+      "hop": 1,
+      "path_strength": 0.432,
+      "path": "syntax:square-brackets <-CONCERNS- idea:484/which-brackets-for-generic-type-parameters"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:484/which-brackets-for-generic-type-parameters",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:484",
+      "hop": 2,
+      "path_strength": 0.233,
+      "path": "syntax:square-brackets <-CONCERNS- idea:484/which-brackets-for-generic-type-parameters <-REJECTED_ALTERNATIVE- pep:484"
+    },
+    {
+      "step": "traverse",
+      "from": "syntax:square-brackets",
+      "edge": "CONCERNS",
+      "to": "idea:646/readability-class-array-generic-dtype-unpack-shape",
+      "hop": 1,
+      "path_strength": 0.432,
+      "path": "syntax:square-brackets <-CONCERNS- idea:646/readability-class-array-generic-dtype-unpack-shape"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:646/readability-class-array-generic-dtype-unpack-shape",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:646",
+      "hop": 2,
+      "path_strength": 0.233,
+      "path": "syntax:square-brackets <-CONCERNS- idea:646/readability-class-array-generic-dtype-unpack-shape <-REJECTED_ALTERNATIVE- pep:646"
+    },
+    {
+      "step": "traverse",
+      "from": "syntax:square-brackets",
+      "edge": "CONCERNS",
+      "to": "idea:695/angle-brackets",
+      "hop": 1,
+      "path_strength": 0.432,
+      "path": "syntax:square-brackets <-CONCERNS- idea:695/angle-brackets"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:695/angle-brackets",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:695",
+      "hop": 2,
+      "path_strength": 0.233,
+      "path": "syntax:square-brackets <-CONCERNS- idea:695/angle-brackets <-REJECTED_ALTERNATIVE- pep:695"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:695/angle-brackets",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:695",
+      "hop": 1,
+      "path_strength": 0.432,
+      "path": "idea:695/angle-brackets <-REJECTED_ALTERNATIVE- pep:695"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:484/which-brackets-for-generic-type-parameters",
+      "edge": "REJECTED_ALTERNATIVE",
+      "to": "pep:484",
+      "hop": 1,
+      "path_strength": 0.288,
+      "path": "idea:484/which-brackets-for-generic-type-parameters <-REJECTED_ALTERNATIVE- pep:484"
+    },
+    {
+      "step": "traverse",
+      "from": "idea:696/allowing-the-type-parameters-defaults-to-be",
+      "edge": "CONCERNS",
+      "to": "pep:637",
+      "hop": 2,
+      "path_strength": 0.181,
+      "path": "construct:generic <-CONCERNS- idea:696/allowing-the-type-parameters-defaults-to-be -CONCERNS-> pep:637"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:3107",
+      "hop": 2,
+      "path_strength": 0.227,
+      "path": "construct:generic <-INTRODUCES- pep:484 -BUILDS_ON-> pep:3107"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:3141",
+      "hop": 2,
+      "path_strength": 0.113,
+      "path": "construct:generic <-INTRODUCES- pep:484 -BUILDS_ON-> pep:3141"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:333",
+      "hop": 2,
+      "path_strength": 0.227,
+      "path": "construct:generic <-INTRODUCES- pep:484 -BUILDS_ON-> pep:333"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:443",
+      "hop": 2,
+      "path_strength": 0.113,
+      "path": "construct:generic <-INTRODUCES- pep:484 -BUILDS_ON-> pep:443"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:482",
+      "hop": 2,
+      "path_strength": 0.227,
+      "path": "construct:generic <-INTRODUCES- pep:484 -BUILDS_ON-> pep:482"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:483",
+      "hop": 2,
+      "path_strength": 0.227,
+      "path": "construct:generic <-INTRODUCES- pep:484 -BUILDS_ON-> pep:483"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:492",
+      "hop": 2,
+      "path_strength": 0.181,
+      "path": "construct:generic <-INTRODUCES- pep:484 -BUILDS_ON-> pep:492"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:526",
+      "hop": 2,
+      "path_strength": 0.113,
+      "path": "construct:generic <-INTRODUCES- pep:484 -BUILDS_ON-> pep:526"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:561",
+      "hop": 2,
+      "path_strength": 0.113,
+      "path": "construct:generic <-INTRODUCES- pep:484 -BUILDS_ON-> pep:561"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:3107",
+      "hop": 2,
+      "path_strength": 0.144,
+      "path": "syntax:square-brackets <-INTRODUCES- pep:484 -BUILDS_ON-> pep:3107"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:3141",
+      "hop": 2,
+      "path_strength": 0.072,
+      "path": "syntax:square-brackets <-INTRODUCES- pep:484 -BUILDS_ON-> pep:3141"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:333",
+      "hop": 2,
+      "path_strength": 0.144,
+      "path": "syntax:square-brackets <-INTRODUCES- pep:484 -BUILDS_ON-> pep:333"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:443",
+      "hop": 2,
+      "path_strength": 0.072,
+      "path": "syntax:square-brackets <-INTRODUCES- pep:484 -BUILDS_ON-> pep:443"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:482",
+      "hop": 2,
+      "path_strength": 0.144,
+      "path": "syntax:square-brackets <-INTRODUCES- pep:484 -BUILDS_ON-> pep:482"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:483",
+      "hop": 2,
+      "path_strength": 0.144,
+      "path": "syntax:square-brackets <-INTRODUCES- pep:484 -BUILDS_ON-> pep:483"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:492",
+      "hop": 2,
+      "path_strength": 0.115,
+      "path": "syntax:square-brackets <-INTRODUCES- pep:484 -BUILDS_ON-> pep:492"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:526",
+      "hop": 2,
+      "path_strength": 0.072,
+      "path": "syntax:square-brackets <-INTRODUCES- pep:484 -BUILDS_ON-> pep:526"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:561",
+      "hop": 2,
+      "path_strength": 0.072,
+      "path": "syntax:square-brackets <-INTRODUCES- pep:484 -BUILDS_ON-> pep:561"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:695",
+      "edge": "BUILDS_ON",
+      "to": "pep:483",
+      "hop": 2,
+      "path_strength": 0.259,
+      "path": "idea:695/angle-brackets <-REJECTED_ALTERNATIVE- pep:695 -BUILDS_ON-> pep:483"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:695",
+      "edge": "BUILDS_ON",
+      "to": "pep:484",
+      "hop": 2,
+      "path_strength": 0.259,
+      "path": "idea:695/angle-brackets <-REJECTED_ALTERNATIVE- pep:695 -BUILDS_ON-> pep:484"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:695",
+      "edge": "BUILDS_ON",
+      "to": "pep:563",
+      "hop": 2,
+      "path_strength": 0.104,
+      "path": "idea:695/angle-brackets <-REJECTED_ALTERNATIVE- pep:695 -BUILDS_ON-> pep:563"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:695",
+      "edge": "BUILDS_ON",
+      "to": "pep:612",
+      "hop": 2,
+      "path_strength": 0.259,
+      "path": "idea:695/angle-brackets <-REJECTED_ALTERNATIVE- pep:695 -BUILDS_ON-> pep:612"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:695",
+      "edge": "BUILDS_ON",
+      "to": "pep:613",
+      "hop": 2,
+      "path_strength": 0.207,
+      "path": "idea:695/angle-brackets <-REJECTED_ALTERNATIVE- pep:695 -BUILDS_ON-> pep:613"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:695",
+      "edge": "BUILDS_ON",
+      "to": "pep:646",
+      "hop": 2,
+      "path_strength": 0.259,
+      "path": "idea:695/angle-brackets <-REJECTED_ALTERNATIVE- pep:695 -BUILDS_ON-> pep:646"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:695",
+      "edge": "BUILDS_ON",
+      "to": "pep:649",
+      "hop": 2,
+      "path_strength": 0.104,
+      "path": "idea:695/angle-brackets <-REJECTED_ALTERNATIVE- pep:695 -BUILDS_ON-> pep:649"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:3107",
+      "hop": 2,
+      "path_strength": 0.173,
+      "path": "idea:484/which-brackets-for-generic-type-parameters <-REJECTED_ALTERNATIVE- pep:484 -BUILDS_ON-> pep:3107"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:3141",
+      "hop": 2,
+      "path_strength": 0.086,
+      "path": "idea:484/which-brackets-for-generic-type-parameters <-REJECTED_ALTERNATIVE- pep:484 -BUILDS_ON-> pep:3141"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:333",
+      "hop": 2,
+      "path_strength": 0.173,
+      "path": "idea:484/which-brackets-for-generic-type-parameters <-REJECTED_ALTERNATIVE- pep:484 -BUILDS_ON-> pep:333"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:443",
+      "hop": 2,
+      "path_strength": 0.086,
+      "path": "idea:484/which-brackets-for-generic-type-parameters <-REJECTED_ALTERNATIVE- pep:484 -BUILDS_ON-> pep:443"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:482",
+      "hop": 2,
+      "path_strength": 0.173,
+      "path": "idea:484/which-brackets-for-generic-type-parameters <-REJECTED_ALTERNATIVE- pep:484 -BUILDS_ON-> pep:482"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:483",
+      "hop": 2,
+      "path_strength": 0.173,
+      "path": "idea:484/which-brackets-for-generic-type-parameters <-REJECTED_ALTERNATIVE- pep:484 -BUILDS_ON-> pep:483"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:492",
+      "hop": 2,
+      "path_strength": 0.138,
+      "path": "idea:484/which-brackets-for-generic-type-parameters <-REJECTED_ALTERNATIVE- pep:484 -BUILDS_ON-> pep:492"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:526",
+      "hop": 2,
+      "path_strength": 0.086,
+      "path": "idea:484/which-brackets-for-generic-type-parameters <-REJECTED_ALTERNATIVE- pep:484 -BUILDS_ON-> pep:526"
+    },
+    {
+      "step": "traverse",
+      "from": "pep:484",
+      "edge": "BUILDS_ON",
+      "to": "pep:561",
+      "hop": 2,
+      "path_strength": 0.086,
+      "path": "idea:484/which-brackets-for-generic-type-parameters <-REJECTED_ALTERNATIVE- pep:484 -BUILDS_ON-> pep:561"
+    },
+    {
+      "step": "score",
+      "pep": 484,
+      "formula": "path_sum 1.632 x status[Final]=1.0 x centrality 1.50",
+      "score": 2.447
+    },
+    {
+      "step": "score",
+      "pep": 585,
+      "formula": "path_sum 0.262 x status[Final]=1.0 x centrality 1.06",
+      "score": 0.278
+    },
+    {
+      "step": "score",
+      "pep": 646,
+      "formula": "path_sum 0.755 x status[Final]=1.0 x centrality 1.12",
+      "score": 0.844
+    },
+    {
+      "step": "score",
+      "pep": 696,
+      "formula": "path_sum 0.204 x status[Final]=1.0 x centrality 1.00",
+      "score": 0.204
+    },
+    {
+      "step": "score",
+      "pep": 695,
+      "formula": "path_sum 0.899 x status[Final]=1.0 x centrality 1.03",
+      "score": 0.925
+    },
+    {
+      "step": "score",
+      "pep": 637,
+      "formula": "path_sum 0.181 x status[None]=0.3 x centrality 1.03",
+      "score": 0.056
+    },
+    {
+      "step": "score",
+      "pep": 3107,
+      "formula": "path_sum 0.543 x status[None]=0.3 x centrality 1.18",
+      "score": 0.192
+    },
+    {
+      "step": "score",
+      "pep": 3141,
+      "formula": "path_sum 0.272 x status[None]=0.3 x centrality 1.03",
+      "score": 0.084
+    },
+    {
+      "step": "score",
+      "pep": 333,
+      "formula": "path_sum 0.543 x status[None]=0.3 x centrality 1.03",
+      "score": 0.168
+    },
+    {
+      "step": "score",
+      "pep": 443,
+      "formula": "path_sum 0.272 x status[None]=0.3 x centrality 1.03",
+      "score": 0.084
+    },
+    {
+      "step": "score",
+      "pep": 482,
+      "formula": "path_sum 0.543 x status[None]=0.3 x centrality 1.03",
+      "score": 0.168
+    },
+    {
+      "step": "score",
+      "pep": 483,
+      "formula": "path_sum 0.803 x status[Final]=1.0 x centrality 1.12",
+      "score": 0.897
+    },
+    {
+      "step": "score",
+      "pep": 492,
+      "formula": "path_sum 0.435 x status[None]=0.3 x centrality 1.03",
+      "score": 0.134
+    },
+    {
+      "step": "score",
+      "pep": 526,
+      "formula": "path_sum 0.272 x status[Final]=1.0 x centrality 1.24",
+      "score": 0.336
+    },
+    {
+      "step": "score",
+      "pep": 561,
+      "formula": "path_sum 0.272 x status[Final]=1.0 x centrality 1.03",
+      "score": 0.28
+    },
+    {
+      "step": "score",
+      "pep": 563,
+      "formula": "path_sum 0.104 x status[Superseded]=0.8 x centrality 1.09",
+      "score": 0.09
+    },
+    {
+      "step": "score",
+      "pep": 612,
+      "formula": "path_sum 0.259 x status[Final]=1.0 x centrality 1.06",
+      "score": 0.274
+    },
+    {
+      "step": "score",
+      "pep": 613,
+      "formula": "path_sum 0.207 x status[Final]=1.0 x centrality 1.03",
+      "score": 0.213
+    },
+    {
+      "step": "score",
+      "pep": 649,
+      "formula": "path_sum 0.104 x status[Final]=1.0 x centrality 1.06",
+      "score": 0.11
+    },
+    {
+      "step": "infer",
+      "rule": "relevance-filter",
+      "kept": [
+        "idea:484/which-brackets-for-generic-type-parameters",
+        "idea:695/angle-brackets"
+      ],
+      "dropped": [
+        "idea:585/generics-erasure",
+        "idea:646/readability-class-array-generic-dtype-unpack-shape",
+        "idea:696/allowing-the-type-parameters-defaults-to-be"
+      ]
+    },
+    {
+      "step": "infer",
+      "rule": "I1_PRIOR_REJECTION",
+      "fired": true,
+      "inputs": [
+        "idea:484/which-brackets-for-generic-type-parameters",
+        "idea:695/angle-brackets",
+        "pep:484",
+        "pep:695",
+        "pep:483",
+        "pep:646",
+        "pep:526",
+        "pep:561"
+      ]
+    },
+    {
+      "step": "infer",
+      "rule": "I2_ALREADY_PROVIDED",
+      "fired": false,
+      "inputs": [
+        "construct:generic",
+        "syntax:angle-brackets",
+        "syntax:square-brackets"
+      ]
+    },
+    {
+      "step": "infer",
+      "rule": "I3_DEPENDS_ON",
+      "fired": true,
+      "inputs": [
+        "Generic",
+        "square-bracket generics"
+      ]
+    },
+    {
+      "step": "infer",
+      "rule": "I4_SUPERSEDED_SOURCE",
+      "fired": false,
+      "inputs": [
+        "pep:484",
+        "pep:695",
+        "pep:483",
+        "pep:646",
+        "pep:526",
+        "pep:561",
+        "pep:585",
+        "pep:612",
+        "pep:613",
+        "pep:696",
+        "pep:3107",
+        "pep:333",
+        "pep:482"
+      ]
+    },
+    {
+      "step": "infer",
+      "rule": "I5_DESIGN_RATIONALE",
+      "fired": true,
+      "inputs": [
+        "syntax:square-brackets",
+        "pep:484"
+      ]
+    },
+    {
+      "step": "infer",
+      "rule": "I6_LATER_RESOLVED",
+      "fired": false,
+      "inputs": [
+        "idea:484/which-brackets-for-generic-type-parameters",
+        "idea:695/angle-brackets"
+      ]
+    },
+    {
+      "step": "infer",
+      "rule": "I7_EXTENDED_BY",
+      "fired": false,
+      "inputs": [
+        "construct:generic",
+        "syntax:angle-brackets",
+        "syntax:square-brackets"
+      ]
+    },
+    {
+      "step": "output",
+      "verdict": "explained",
+      "rule": "see Reasoner.output()"
+    }
+  ]
+}

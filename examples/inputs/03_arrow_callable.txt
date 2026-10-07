@@ -1,0 +1,1 @@
+Allow writing callable types with an arrow, like (int, str) -> bool, instead of Callable[[int, str], bool].

@@ -1,0 +1,1 @@
+Why does Python use square brackets for generics instead of angle brackets like Java or C++?
