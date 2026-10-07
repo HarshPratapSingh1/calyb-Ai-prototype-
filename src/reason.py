@@ -480,13 +480,18 @@ class Reasoner:
                 pid, edge = intro
                 node = self.g.nodes[best.entity_id]
                 problems = [(self.g.nodes[t].label, e) for t, e in self.g.neighbors(pid, "ADDRESSES_PROBLEM", "out")]
-                matched_ids = {s.entity_id for s in seeds}
+                # Alternatives worth quoting: ideas (from the introducer or any
+                # ranked PEP) that concern the explained entity itself or a
+                # matched syntax form / problem. A passing mention of a matched
+                # construct (``Generic[...]`` in an unrelated idea) is not enough.
+                allowed = {best.entity_id} | {s.entity_id for s in seeds
+                                              if s.entity_id.split(":")[0] in ("syntax", "problem")}
                 ideas: list[tuple[str, Relationship]] = []
                 context_peps = [pid] + [p for p in ranked_ids if p != pid]
                 for cp in context_peps:
                     for idea_id, e in self.g.neighbors(cp, "REJECTED_ALTERNATIVE", "out"):
                         concerns = {t for t, _ in self.g.neighbors(idea_id, "CONCERNS", "out")}
-                        if concerns & matched_ids:
+                        if concerns & allowed:
                             ideas.append((idea_id, e))
                 status = pep_attr(pid, "status")
                 stmt = (f"{node.label} was {'proposed' if status in ('Rejected', 'Withdrawn') else 'introduced'} "

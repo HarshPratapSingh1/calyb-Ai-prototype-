@@ -142,3 +142,17 @@ TypeGuard and names TypeIs (3.13) in the I7 statement.
 - The 26 problem entries and ~45 construct/syntax entries are hand-curated;
   an input about a typing topic outside them (e.g. `Never`, `TypeVar`
   variance keywords) degrades to `insufficient_evidence` rather than guessing.
+
+## Iteration 9 (after the fresh-clone run): I5 quoted a passing mention
+
+**Weak.** Input 04's rationale listed PEP 646's "Readability. class
+Array(Generic[DType, Unpack[Shape]]) …" as an alternative that was turned
+down, only because that idea mentions ``Generic`` and `Generic` was a matched
+construct.
+
+**Changed.** I5 quotes an idea only if it concerns the entity being explained
+or a matched syntax form / problem; a matched construct mentioned in passing
+no longer qualifies.
+
+**Effect.** Input 04 quotes exactly the two bracket discussions (484, 695).
+Inputs 02 and 06 unchanged.
