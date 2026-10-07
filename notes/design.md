@@ -406,3 +406,23 @@ the rule generalises:
 4. **Curated tables (constructs, syntax, problems)** are the main hand-written
    knowledge. They live in one place in `extract.py`, and every entry will
    carry a comment saying which PEP text it was derived from.
+
+---
+
+## 7. Changes made while building (Phase 3)
+
+The implementation follows sections 1–5 with these additions, each prompted by
+a concrete output reviewed in `notes/iterations.md`:
+
+| Change | Why |
+|---|---|
+| Entity **TypeChecker** + relationship **IMPLEMENTED_BY** (PEP → checker, from implementation sections) | The slice definition names type checkers; cheap to add and useful context in `knowledge_state.json`. 9 relationship types in total. |
+| INTRODUCES priorities extended: 1 cross-reference, 2 title, 3 abstract cue, 4 section heading, **5 earliest mention as code** | `Optional`, `ClassVar`, `*Ts`, the `type` statement are never named in a title or heading. |
+| Only Standards Track PEPs introduce; a PEP whose title names a Syntax form does not introduce a construct | 483 is theory; 604 and 677 are about notation for existing constructs. |
+| `SyntaxSpec.prose` for bracket forms; `never_adopted` for angle brackets | Bracket forms are discussed by name, not written as code. |
+| Rule **I7 EXTENDED_BY**: Final PEPs that extend a matched construct, flagged when they address a problem the introducer did not | Lists feature families (TypedDict → 655/692/705) and lets 742 cover a TypeGuard proposal. |
+| **Relevance filter** on reached rejected ideas before I1/I6 | Every TypedDict idea mentions ``TypedDict``; only ideas sharing a further keyword with the input count. |
+| I6 restricted to postponed ideas, or rejected ideas via a Problem the idea's own PEP does not address | Removed contradictory "rejected, later delivered" statements. |
+| Verdict precedence: dead Rejected/Withdrawn PEP → I2/I7 coverage → live rejected idea → I6 → none | A withdrawn PEP with a Final successor (724 → 742) must not make a proposal "previously rejected". |
+| `minimum_python_version` = max(I3 dependencies, I6 delivering PEP) | The version the asked-for feature needs, not the oldest base construct. |
+| Traversal also follows `RejectedIdea CONCERNS → PEP` | PEPs cited inside an objection (563 in PEP 604) get a path and can trigger I4. |
