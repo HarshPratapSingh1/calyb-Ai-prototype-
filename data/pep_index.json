@@ -1,0 +1,247 @@
+{
+  "slice": "Python's static typing system (typing module, annotations, generics, protocols, type checkers)",
+  "source": "https://github.com/python/peps (raw .rst); titles/statuses cross-checked against https://peps.python.org/topic/typing/ on 2026-10-06",
+  "selection_notes": "All 28 suggested candidates plus two non-accepted typing PEPs (677 Rejected, 724 Withdrawn) so the reasoner has real negative precedents. PEP 749 (Implementing PEP 649) is referenced via Superseded-By but kept out of scope; it will appear as an out-of-slice stub node.",
+  "peps": [
+    {
+      "number": 483,
+      "title": "The Theory of Type Hints",
+      "status": "Final",
+      "type": "Informational",
+      "python_version": null,
+      "why_included": "Informational foundation: defines gradual typing, consistency and subtyping vocabulary that later PEPs build on."
+    },
+    {
+      "number": 484,
+      "title": "Type Hints",
+      "status": "Final",
+      "type": "Standards Track",
+      "python_version": "3.5",
+      "why_included": "The root of the slice: introduces the typing module, Union/Optional, generics, TypeVar and the type-checker contract. Most other PEPs reference it."
+    },
+    {
+      "number": 526,
+      "title": "Syntax for Variable Annotations",
+      "status": "Final",
+      "type": "Standards Track",
+      "python_version": "3.6",
+      "why_included": "Adds variable annotation syntax (x: int) and ClassVar; the syntactic basis for TypedDict, dataclasses and Final."
+    },
+    {
+      "number": 544,
+      "title": "Protocols: Structural subtyping (static duck typing)",
+      "status": "Final",
+      "type": "Standards Track",
+      "python_version": "3.8",
+      "why_included": "Protocols / structural subtyping; key example of a design choice (static duck typing vs nominal ABCs) with rich rejected ideas."
+    },
+    {
+      "number": 561,
+      "title": "Distributing and Packaging Type Information",
+      "status": "Final",
+      "type": "Standards Track",
+      "python_version": "3.7",
+      "why_included": "How type information is shipped (py.typed, stub-only packages); links the type system to type checkers and packaging."
+    },
+    {
+      "number": 563,
+      "title": "Postponed Evaluation of Annotations",
+      "status": "Superseded",
+      "type": "Standards Track",
+      "python_version": "3.7",
+      "why_included": "Postponed evaluation (from __future__ import annotations). Superseded, so it exercises the SUPERSEDES relationship."
+    },
+    {
+      "number": 585,
+      "title": "Type Hinting Generics In Standard Collections",
+      "status": "Final",
+      "type": "Standards Track",
+      "python_version": "3.9",
+      "why_included": "Lets list[int], dict[str, int] replace typing.List/Dict; a 'why does Python do X' anchor for deprecated aliases."
+    },
+    {
+      "number": 586,
+      "title": "Literal Types",
+      "status": "Final",
+      "type": "Standards Track",
+      "python_version": "3.8",
+      "why_included": "Literal types; extended later by LiteralString (675) and used by TypedDict keys."
+    },
+    {
+      "number": 589,
+      "title": "TypedDict: Type Hints for Dictionaries with a Fixed Set of Keys",
+      "status": "Final",
+      "type": "Standards Track",
+      "python_version": "3.8",
+      "why_included": "TypedDict; parent of a family (655, 692, 705) and the natural target for 'typed dict literal' proposals."
+    },
+    {
+      "number": 591,
+      "title": "Adding a final qualifier to typing",
+      "status": "Final",
+      "type": "Standards Track",
+      "python_version": "3.8",
+      "why_included": "Final qualifier / @final; illustrates qualifiers alongside ClassVar and ReadOnly."
+    },
+    {
+      "number": 593,
+      "title": "Flexible function and variable annotations",
+      "status": "Final",
+      "type": "Standards Track",
+      "python_version": "3.9",
+      "why_included": "Annotated[T, x]: metadata in annotations; shows how non-typing uses of annotations were accommodated."
+    },
+    {
+      "number": 604,
+      "title": "Allow writing union types as X | Y",
+      "status": "Final",
+      "type": "Standards Track",
+      "python_version": "3.10",
+      "why_included": "X | Y union syntax; the canonical 'why X | Y instead of Union[X, Y]' question."
+    },
+    {
+      "number": 612,
+      "title": "Parameter Specification Variables",
+      "status": "Final",
+      "type": "Standards Track",
+      "python_version": "3.10",
+      "why_included": "ParamSpec and Concatenate for decorators/higher-order callables; relevant to callable typing."
+    },
+    {
+      "number": 613,
+      "title": "Explicit Type Aliases",
+      "status": "Final",
+      "type": "Standards Track",
+      "python_version": "3.10",
+      "why_included": "Explicit TypeAlias; later superseded in practice by the type statement in PEP 695."
+    },
+    {
+      "number": 646,
+      "title": "Variadic Generics",
+      "status": "Final",
+      "type": "Standards Track",
+      "python_version": "3.11",
+      "why_included": "TypeVarTuple / variadic generics (*Ts); extends the generics family."
+    },
+    {
+      "number": 647,
+      "title": "User-Defined Type Guards",
+      "status": "Final",
+      "type": "Standards Track",
+      "python_version": "3.10",
+      "why_included": "TypeGuard for user-defined narrowing; parent of the withdrawn 724 and the accepted 742."
+    },
+    {
+      "number": 649,
+      "title": "Deferred Evaluation Of Annotations Using Descriptors",
+      "status": "Final",
+      "type": "Standards Track",
+      "python_version": "3.14",
+      "why_included": "Deferred evaluation of annotations via descriptors; formally replaces PEP 563."
+    },
+    {
+      "number": 655,
+      "title": "Marking individual TypedDict items as required or potentially-missing",
+      "status": "Final",
+      "type": "Standards Track",
+      "python_version": "3.11",
+      "why_included": "Required[] / NotRequired[] for TypedDict items; part of the TypedDict family."
+    },
+    {
+      "number": 673,
+      "title": "Self Type",
+      "status": "Final",
+      "type": "Standards Track",
+      "python_version": "3.11",
+      "why_included": "Self type; common ergonomic feature that builds on TypeVar-bound patterns from 484."
+    },
+    {
+      "number": 675,
+      "title": "Arbitrary Literal String Type",
+      "status": "Final",
+      "type": "Standards Track",
+      "python_version": "3.11",
+      "why_included": "LiteralString; a security-motivated extension of Literal types (586)."
+    },
+    {
+      "number": 677,
+      "title": "Callable Type Syntax",
+      "status": "Rejected",
+      "type": "Standards Track",
+      "python_version": "3.11",
+      "why_included": "Callable type syntax ((int) -> str). REJECTED; gives the reasoner a real 'this was rejected before' precedent."
+    },
+    {
+      "number": 681,
+      "title": "Data Class Transforms",
+      "status": "Final",
+      "type": "Standards Track",
+      "python_version": "3.11",
+      "why_included": "dataclass_transform; ties the type system to third-party libraries and type-checker behaviour."
+    },
+    {
+      "number": 692,
+      "title": "Using TypedDict for more precise **kwargs typing",
+      "status": "Final",
+      "type": "Standards Track",
+      "python_version": "3.12",
+      "why_included": "Unpack[TypedDict] for precise **kwargs; connects TypedDict to callable signatures."
+    },
+    {
+      "number": 695,
+      "title": "Type Parameter Syntax",
+      "status": "Final",
+      "type": "Standards Track",
+      "python_version": "3.12",
+      "why_included": "Type parameter syntax (class C[T], def f[T], type X = ...); modern generics syntax that reworks 484/613 patterns."
+    },
+    {
+      "number": 696,
+      "title": "Type Defaults for Type Parameters",
+      "status": "Final",
+      "type": "Standards Track",
+      "python_version": "3.13",
+      "why_included": "Defaults for type parameters; builds directly on 695 and TypeVar/ParamSpec/TypeVarTuple."
+    },
+    {
+      "number": 698,
+      "title": "Override Decorator for Static Typing",
+      "status": "Final",
+      "type": "Standards Track",
+      "python_version": "3.12",
+      "why_included": "@override decorator; an example of a checker-only marker in typing."
+    },
+    {
+      "number": 702,
+      "title": "Marking deprecations using the type system",
+      "status": "Final",
+      "type": "Standards Track",
+      "python_version": "3.13",
+      "why_included": "@deprecated in the type system; recent, small PEP that references many earlier ones."
+    },
+    {
+      "number": 705,
+      "title": "TypedDict: Read-only items",
+      "status": "Final",
+      "type": "Standards Track",
+      "python_version": "3.13",
+      "why_included": "ReadOnly TypedDict items; latest member of the TypedDict family."
+    },
+    {
+      "number": 724,
+      "title": "Stricter Type Guards",
+      "status": "Withdrawn",
+      "type": "Standards Track",
+      "python_version": "3.13",
+      "why_included": "Stricter type guards. WITHDRAWN in favour of 742; a second negative precedent for the reasoner."
+    },
+    {
+      "number": 742,
+      "title": "Narrowing types with TypeIs",
+      "status": "Final",
+      "type": "Standards Track",
+      "python_version": "3.13",
+      "why_included": "TypeIs narrowing; replaces 724 and refines 647, closing a three-PEP narrowing lineage."
+    }
+  ]
+}
